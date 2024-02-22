@@ -1,28 +1,32 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import './App.css';
+import './App.module.css';
 
 import Post from './components/post/Post';
 import SignUpLogIn from "./components/SignUp_logIn/SignUpLogIn";
 import Entire from "./components/entire-display/entire";
-
+import {Button} from "@mui/material";
 
 function App() {
   return (
+    
     <BrowserRouter>
-     <div className="app">
-        <Link to="/">entire</Link>
-          <br />
-        <Link to="/SignUp_logIn">会員登録・ログイン</Link>
-        <br />
-       <Link to ="/post">新規投稿</Link>
-        
+    <div className="app">
+      <Button variant="outlined" size="large" component={Link} to="/">
+        TOP
+      </Button>
+      <Button variant="outlined" size="large" component={Link} to="/SignUp_LogIn">
+        会員登録
+      </Button>
+      <Button variant="outlined" size="large" component={Link} to="/post">
+        新規投稿
+      </Button>
         <Routes>
           <Route path = "/" element = {<Entire />}/>
           <Route path = "/SignUp_LogIn" element={<SignUpLogIn />}/>
           <Route path = "/post" element = {<Post />}/>
 
         </Routes>
-      </div>
+        </div>
     </BrowserRouter>
   );
 }
