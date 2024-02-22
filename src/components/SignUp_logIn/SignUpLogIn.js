@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "./SignUpLogIn.module.css";
+import "./SignUpLogIn.css";
 
 import EmailIcon from '@mui/icons-material/Email';
 import UserIcon from '@mui/icons-material/Person';
