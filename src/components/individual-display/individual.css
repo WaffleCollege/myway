@@ -1,0 +1,73 @@
+/*濃いめグリーン
+#7EC2C2
+うすグリーン
+#9DDCDC  
+クリーム
+#FFF4E1
+ピンク
+#E67A7A*/
+
+
+.header{
+    background-color: #9DDCDC/*うすグリーン*/;
+}
+
+
+.indiv_intro_box{
+    background-color: #FFF4E1/*クリーム*/;
+}
+
+
+.indiv_title{
+
+
+}
+
+
+.indiv_introduce{
+
+
+}
+
+
+.indiv_tag{
+
+
+}
+
+
+.indiv_course_box{
+    background-color: #FFF4E1/*クリーム*/;
+}
+
+
+.indiv_time{
+    color: #E67A7A/*ピンク*/;
+}
+
+
+.indiv_spotName{
+   
+}
+
+
+.indiv_spotIntroduce{
+
+
+}
+
+
+.indiv_image{
+
+
+}
+
+
+.back{
+    color: #7EC2C2/*濃いグリーン*/;
+}
+
+
+.footer{
+    background-color: #9DDCDC/*うすグリーン*/;
+}
