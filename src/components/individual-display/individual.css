@@ -5,69 +5,156 @@
 クリーム
 #FFF4E1
 ピンク
-#E67A7A*/
+#E67A7A
+グレー
+#797979
+*/
 
+.container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 60px;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    max-width: 1120px; 
+    min-height: 100vh;
+    margin: 0 auto;
+
+}
+
+/*ヘッダー*/
+header{
+    padding: 10px;
+    align-items: center;
+}
 
 .header{
     background-color: #9DDCDC/*うすグリーン*/;
+    width: 90%;
+    max-width: 1120px;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+    color: #797979;
 }
 
-
+/*以下main*/
 .indiv_intro_box{
     background-color: #FFF4E1/*クリーム*/;
+    padding: 10px;
 }
 
 
 .indiv_title{
-
-
+    padding: 10px;
+    color: #797979;
 }
 
 
 .indiv_introduce{
-
-
+    padding: 10px;
+    color: #797979;
 }
 
 
 .indiv_tag{
-
-
+    padding: 10px;
+    color: #797979;
 }
 
-
+/*モデルコースbox*/
 .indiv_course_box{
     background-color: #FFF4E1/*クリーム*/;
+    padding: 10px;
 }
 
-
-.indiv_time{
-    color: #E67A7A/*ピンク*/;
+.timeline > li {
+    overflow: hidden;
+    margin: 0;
+    position: relative;
+    padding-top: 30px;
 }
 
+.timeline_content {
+    width: 75%;
+    float: left;
+    border-left: 3px #E67A7A/*ピンク*/ solid;
+    padding-left: 30px;
+    margin-left: 20px;
+    position: relative;
+}
+
+.timeline_content::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: #E67A7A; /* ピンク */
+    position: absolute;
+    left: -12px; 
+    top: -10px; 
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/*mappin_imgとindiv_spotNameの横並び↓*/
+.flex{
+    display: flex;
+    padding: 10px;
+}
+
+.flex .mappin_img{
+    width: 50px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    color: #797979;
+}
+
+.flex .indiv_spotName{
+    margin: -22px 0 0 -22px;
+    padding: 0;
+}
 
 .indiv_spotName{
-   
+   padding: 10px;
+   text-align: left;
+   color: #797979;
 }
+/*mappin_imgとindiv_spotNameの横並び↑*/
 
 
 .indiv_spotIntroduce{
-
-
+    padding: 20px;
+    color: #797979;
 }
 
 
 .indiv_image{
-
-
+    padding: 10px;
 }
 
-
-.back{
-    color: #7EC2C2/*濃いグリーン*/;
+img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
 }
 
+/*mainここまで*/
+
+/*フッター*/
+footer{
+    background-color: #9DDCDC/*うすグリーン*/;
+    margin-top: auto;
+    padding: 10px;
+    align-items: center;
+}
 
 .footer{
-    background-color: #9DDCDC/*うすグリーン*/;
+    padding: 10px;
+    text-align: center;
+    color: #797979;
+    
 }

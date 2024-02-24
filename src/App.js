@@ -4,6 +4,7 @@ import './App.css';
 import Post from './components/post/Post';
 import SignUpLogIn from "./components/SignUp_logIn/SignUpLogIn";
 import Entire from "./components/entire-display/entire";
+import Individual from "./components/individual-display/individual";
 import {Button} from "@mui/material";
 
 function App() {
@@ -20,11 +21,14 @@ function App() {
       <Button variant="outlined" size="large" component={Link} to="/post">
         新規投稿
       </Button>
+      <Button variant="outlined" size="large" component={Link} to="/individual-display">
+        個別閲覧画面
+      </Button>
         <Routes>
           <Route path = "/" element = {<Entire />}/>
           <Route path = "/SignUp_LogIn" element={<SignUpLogIn />}/>
           <Route path = "/post" element = {<Post />}/>
-
+          <Route path = "/individual-display" element = {<Individual />}/>
         </Routes>
         </div>
     </BrowserRouter>
