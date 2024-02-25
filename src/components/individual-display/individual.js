@@ -3,13 +3,11 @@ import React from 'react'
 
 
 /*cssのインポート*/
-import "./Individual.css";
+import "./individual.css";
 
 
-/*BootStrapのインポート*/
-import Button from 'react-bootstrap/Button';
-import Badge from 'react-bootstrap/Badge';
-
+/*muiのインポート*/
+import Button from '@mui/material/Button';
 
 /*ReactIconsのインポート*/
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -17,24 +15,62 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 const Individual = () => {
   return (
-    <div className="individual">
-      <div className="header">Header</div>
-      <div className="indiv_intro_box">
-        <div className="indiv_title">Title</div>
-        <div className="indiv_introduce">Introduce</div>
-        <div className="indiv_tag">Tag</div>
-      </div>
+    <div className="container">
+      <header>
+      <div className="header">
+          <a href="" className="">
+            <span><h1>Header</h1></span>
+          </a>
+        </div>
+      </header>
+      
+      <main>
+        <div className="indiv_intro_box">
+          <div className="indiv_title">
+            <h1>Title</h1>
+            </div>
+          <div className="indiv_introduce">
+            <h2>Introduce</h2>
+            </div>
+          <div className="indiv_tag">
+            <h3>Tag</h3>
+            </div>
+        </div>
      
-      <div className="indiv_course_box">
-        <div className="indiv_time">Time</div>
-        <div className="indiv_spotName">Spot Name</div>
-        <div className="indiv_spotIntroduce">Spot Introduce</div>
-        <div className="indiv_image">Image</div>
-      </div>
-
-
-      <div className="back">Back</div>
-      <div className="footer">Footer</div>
+        <div className="indiv_course_box">
+          <ul className='timeline'>
+            <li>
+              <div className='timeline_content'>
+                <div className='flex'>
+                  <figure className='mappin_img'>
+                    <FaMapMarkerAlt />
+                    </figure>
+                  <div className="indiv_spotName">
+                    <h3>Spot Name</h3>
+                    </div>
+                </div>
+          
+                <div className="indiv_spotIntroduce">
+                  <h3>Spot Introduce</h3>
+                  </div>
+                <div className="indiv_image">
+                  *Image*
+                  <img src=""/>
+                  </div>
+               </div>
+              
+            </li>
+          </ul>
+          
+        </div>
+      </main>
+      
+      <footer>
+        <div className="footer">
+          <h2>Footer</h2>
+          </div>
+        </footer>  
+      
     </div>
   )
 }
