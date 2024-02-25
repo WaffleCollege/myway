@@ -12,16 +12,16 @@ function App() {
     
     <BrowserRouter>
     <div className="app">
-      <Button variant="outlined" size="large" component={Link} to="/">
+      <Button sx={"color:#7EC2C2;"} variant="outlined" size="large" component={Link} to="/">
         TOP
       </Button>
-      <Button variant="outlined" size="large" component={Link} to="/SignUp_LogIn">
+      <Button sx={"color:#9DDCDC;"} variant="outlined" size="large" component={Link} to="/SignUp_LogIn">
         会員登録
       </Button>
-      <Button variant="outlined" size="large" component={Link} to="/post">
+      <Button sx={"color:#9DDCDC;"} variant="outlined" size="large" component={Link} to="/post">
         新規投稿
       </Button>
-      <Button variant="outlined" size="large" component={Link} to="/individual-display">
+      <Button sx={"color:#E67A7A;"} variant="outlined" size="large" component={Link} to="/individual-display">
         個別閲覧画面
       </Button>
         <Routes>
