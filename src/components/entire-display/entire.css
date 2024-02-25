@@ -1,0 +1,23 @@
+.explore {
+    width:400px;
+    /* float:right; */
+    padding-left: 500px;
+    padding-top:20px;
+}
+
+/* .buttons {  
+    display:inline-block;
+    float:right;
+} */
+
+.boxes{
+    display:inline-block;
+    flex-wrap: wrap;
+    cursor: pointer;
+    margin-left: 60px;
+   
+}
+/* .whole{
+    background-color: #9DDCDC;
+} */
+
