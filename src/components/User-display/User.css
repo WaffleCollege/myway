@@ -1,0 +1,45 @@
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #A4FFAF; /* 合わせて調整 */
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .profile-image img {
+    border-radius: 50%;
+    width: 100px; /* 画像サイズに合わせて調整 */
+    height: 100px; /* 画像サイズに合わせて調整 */
+    margin-right: 20px;
+  }
+  
+  .profile-image p {
+    width: 100px; /* 画像サイズに合わせて調整 */
+    height: 100px; /* 画像サイズに合わせて調整 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+  
+  .liked-posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  .post {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    /* その他のスタイル */
+  }
+  
