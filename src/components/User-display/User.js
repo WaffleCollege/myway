@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import './UserProfile.css';
+import './User.css';
 
 const UserProfile = () => {
   // ユーザー名とプロフィール画像の状態
