@@ -5,6 +5,7 @@ import Post from './components/post/Post';
 import SignUpLogIn from "./components/SignUp_logIn/SignUpLogIn";
 import Entire from "./components/entire-display/entire";
 import Individual from "./components/individual-display/individual";
+import UserProfile from "./components/User-display/User";
 import {Button} from "@mui/material";
 
 function App() {
@@ -24,11 +25,16 @@ function App() {
       <Button sx={"color:#E67A7A;"} variant="outlined" size="large" component={Link} to="/individual-display">
         個別閲覧画面
       </Button>
+      <Button sx={"color:#E67A7A;"} variant = "outlined" size ="large" component={Link} to = "/User">
+        user
+        </Button>
         <Routes>
           <Route path = "/" element = {<Entire />}/>
           <Route path = "/SignUp_LogIn" element={<SignUpLogIn />}/>
           <Route path = "/post" element = {<Post />}/>
           <Route path = "/individual-display" element = {<Individual />}/>
+          <Route path = "/User" element = {<UserProfile />}/>
+
         </Routes>
         </div>
     </BrowserRouter>
