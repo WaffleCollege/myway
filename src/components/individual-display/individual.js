@@ -15,15 +15,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 const Individual = () => {
   return (
-    <div className="container">
-      <header>
-      <div className="header">
-          <a href="" className="">
-            <span><h1>Header</h1></span>
-          </a>
-        </div>
-      </header>
-      
+    <div className="container">      
       <main>
         <div className="indiv_intro_box">
           <div className="indiv_title">
@@ -63,14 +55,7 @@ const Individual = () => {
           </ul>
           
         </div>
-      </main>
-      
-      <footer>
-        <div className="footer">
-          <h2>Footer</h2>
-          </div>
-        </footer>  
-      
+      </main>      
     </div>
   )
 }
