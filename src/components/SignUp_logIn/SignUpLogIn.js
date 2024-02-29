@@ -25,26 +25,24 @@ function SignUpLogIn() {
             <input type='text'placeholder='ユーザー名'/>
           </div>
         }
-        
-        <div className='input'>
-        <div className='img'>
-          <EmailIcon/> 
-        </div>
-        <input type='email' placeholder='メールアドレス'/>
-        </div>
+          <div className='input'>
+          <div className='img'>
+            <EmailIcon/> 
+          </div>
+          <input type='email' placeholder='メールアドレス'/>
+          </div>
 
-        <div className='input'>
-        <div className='img'>
-          <PasswordIcon/>
-        </div>
-        <input type='password' placeholder='パスワード'/>
-        </div>
+          <div className='input'>
+          <div className='img'>
+            <PasswordIcon/>
+          </div>
+          <input type='password' placeholder='パスワード'/>
+          </div>
+        
+        
       </div>
 
-      {action==="新規登録"?<div></div>:
-        <div className='forget-password'>パスワードを忘れてしまった場合：<span>クリックして下さい</span>
-        </div>
-      }
+      
 
       
       <div className='submit-container'>
