@@ -24,22 +24,6 @@
 
 }
 
-/*ヘッダー*/
-header{
-    padding: 10px;
-    align-items: center;
-}
-
-.header{
-    background-color: #9DDCDC/*うすグリーン*/;
-    width: 90%;
-    max-width: 1120px;
-    text-align: center;
-    align-items: center;
-    margin: 0 auto;
-    color: #797979;
-}
-
 /*以下main*/
 .indiv_intro_box{
     background-color: #FFF4E1/*クリーム*/;
@@ -143,18 +127,3 @@ img{
 }
 
 /*mainここまで*/
-
-/*フッター*/
-footer{
-    background-color: #9DDCDC/*うすグリーン*/;
-    margin-top: auto;
-    padding: 10px;
-    align-items: center;
-}
-
-.footer{
-    padding: 10px;
-    text-align: center;
-    color: #797979;
-    
-}
