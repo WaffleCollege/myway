@@ -1,14 +1,14 @@
 /* カラー：#7EC2C2, #9DDCDC, #FFF4E1, #E67A7A */
 #signup-wrapper{
-    margin-top: 0;
+    margin-top:0;
 }
 
 .container{
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin: 0 auto;
     margin-top: 200px;
-    width: 600px;
+    border-radius: 15px;
     background: #9DDCDC;
     padding-bottom: 30px;
 }
@@ -24,7 +24,7 @@
 
 .text{
     color: #E67A7A;
-    font-size: 48px;
+    font-size: 30px;
     font-weight: 700;
 }
 
@@ -46,8 +46,8 @@
     display: flex;
     align-items: center;
     margin: auto;
-    width: 480px;
-    height: 80px;
+    width: 80%;
+    height: 20%;
     background: #fff;
     border-radius: 6px;
     padding:0 20px;
@@ -69,22 +69,12 @@
     font-size: 19px;
 }
 
-.forget-password{
-    padding-left: 62px;
-    margin-top: 27px;
-    color: #797979;
-    font-size: 18px;
-}
-
-.forget-password span{
-    color: #E67A7A;
-    cursor: pointer;
-}
 
 .submit-container{
     display: flex;
     gap: 30px;
     margin: 60px auto;
+    width: 80%;
 }
 
 .submit{
@@ -99,9 +89,20 @@
     font-size: 19px;
     font-weight: 700;
     cursor: pointer;
+    box-shadow:0 3px 1px #524545;
+}
+
+.submit:active{
+    box-shadow: none;
+    position: relative;
+    top: 3px;
 }
 
 .gray{
     background: #797979;
     color: #fff;
 }
+
+/* .btn{
+    width: 100%;
+} */
