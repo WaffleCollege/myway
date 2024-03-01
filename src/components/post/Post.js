@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState }  from 'react'
 import "./Post.css";
 import {Button} from "@mui/material";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import ImageUpload from './ImageUpload';
-import { useState } from 'react';
+import TagInputComponent from './Tag';
 
 
 function Post() {
@@ -46,7 +46,8 @@ function Post() {
         <div className="form_tag">
             <h2>タグ</h2>
             {/*タグ追加機能実行する*/}
-            <input placeholder="入力してください" type = "text"></input>
+            
+            <TagInputComponent/>
         </div>
         <div className="form_spotName">
             <h2>スポット</h2>
@@ -59,10 +60,8 @@ function Post() {
         <div className="form_image">
             <h2>画像</h2>
             {/*ボタンを押したら画像のアップロードができる*/}
-            <Button className="postBox_addImage"><AddPhotoAlternateIcon/></Button>
-            {/*postBox_addImageができたら以下のinputは消す*/}
             <ImageUpload/>
-            <input className="imageInput" placeholder="画像"></input>
+            
         </div>
         
       </form>
@@ -96,20 +95,18 @@ function Post() {
                 onChange={(e) => handleImageChange(index, e.target.value)}
               />
             </div>
-            <Button className="postBox_addImage">
-              <AddPhotoAlternateIcon />
-            </Button>
+            
             {/* アップロード画像の部分 */}
             <ImageUpload />
           </div>
       ))}
        <div className="addCourse-section">
-          <button type = "button" className="postBox_addCourse" onClick={addCourse}>
-            モデルコースを追加
-          </button>
+          <Button className="postBox_addCourse" onClick={addCourse}><AddCircleOutlineIcon className="custom-icon-color"/>
+          </Button>
+          <p>モデルコース追加</p>
         </div>
             <button variant="outlined" className="postBox_postButton" type="submit">
-            投稿
+            <p>投稿</p>
           </button>
         </form>
       </div>
