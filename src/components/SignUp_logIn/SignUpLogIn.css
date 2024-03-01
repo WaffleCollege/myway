@@ -89,6 +89,13 @@
     font-size: 19px;
     font-weight: 700;
     cursor: pointer;
+    box-shadow:0 3px 1px #524545;
+}
+
+.submit:active{
+    box-shadow: none;
+    position: relative;
+    top: 3px;
 }
 
 .gray{
