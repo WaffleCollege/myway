@@ -1,8 +1,13 @@
 .postBox{
-    padding:10px;
-    margin:50px;
-    border: 3px solid;
-    
+    padding:20px;
+    margin:100px 100px 100px 100px;
+    width :50%;
+    border: 1px #797979;
+    border-style: dotted;
+    margin:0 auto;
+}
+h2{
+    color: #E67A7A;
 }
 .postBox > form{
     display:flex;
@@ -22,6 +27,16 @@ input{
 .postBox_addCourse{
     width:50px;
 }
-.postBox> postBox_postButton{
 
+.custom-icon-color{
+    color:#797979;
+}
+.postBox_postButton{
+    padding:2px;
+    color:white;
+    background-color:#797979;
+    width :30%;
+    margin:0 auto;
+    border-radius:50px;
+    font-weight: bold;
 }
