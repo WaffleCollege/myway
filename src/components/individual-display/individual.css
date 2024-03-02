@@ -16,12 +16,11 @@
     position: relative;
     padding-bottom: 60px;
     box-sizing: border-box;
-    width: 100%;
+    width: 50%;
     height: auto;
     max-width: 1120px; 
     min-height: 100vh;
     margin: 0 auto;
-
 }
 
 /*以下main*/
@@ -51,7 +50,7 @@
 /*モデルコースbox*/
 .indiv_course_box{
     background-color: #FFF4E1/*クリーム*/;
-    padding: 10px;
+    padding: 0;
 }
 
 .timeline > li {
