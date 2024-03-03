@@ -15,9 +15,8 @@
     flex-wrap: wrap;
     cursor: pointer;
     margin-left: 60px;
-   
 }
-/* .whole{
-    background-color: #9DDCDC;
-} */
+.whole{
+    padding-left: 200px;
+}
 
