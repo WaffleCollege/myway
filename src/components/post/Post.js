@@ -2,13 +2,45 @@ import React, { useState }  from 'react'
 import "./Post.css";
 import {Button} from "@mui/material";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+//import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import ImageUpload from './ImageUpload';
 import TagInputComponent from './Tag';
-
+import {db} from "../../firebase";
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+//import {collection,getDocs} from "firebase"
+//import { collection, addDoc } from "firebase/firestore"; 
 
 function Post() {
- 
+  //firebase連携
+  const[posts,setPosts]=useState([]);
+  const postData = collection(db,"posts");
+  // getDocs(postData).then((querySnapshot)=>{
+  //   setPosts(querySnapshot.docs.map((doc)=>doc.data()));
+  // });
+
+  //inputタグに書いたものがfirebaseに格納されるように
+   const[IntroduceMessage,setIntroduceMessage]=useState("");
+   const[SpotIntroduceMessage,setSpotIntroduceMessage]=useState("");
+   const[SpotNameMessage,setSpotNameMessage]=useState("");
+   //const[TagMessage,setTagMessage]=useState("");
+   const[TitleMessage,setTitleMessage]=useState("");
+   //const[routeImage,setRoutetImage]=useState(""); 
+
+   //投稿ボタンを押すことで格納される
+   const sendRoute=(e)=>{
+    //firebaseのデータベースにデータ追加する
+    e.preventDefault();
+    addDoc(collection(db,"posts"),{
+        //image:routeImage,
+        introduce: IntroduceMessage,
+        spotIntroduce:SpotIntroduceMessage,
+        spotName:SpotNameMessage,
+        //tag:TagMessage,
+        title:TitleMessage,
+    });
+   }
+
+
   const [courses, setCourses] = useState([]);
 
   const addCourse = () => {
@@ -32,30 +64,33 @@ function Post() {
     newCourses[index].image = value;
     setCourses(newCourses);
   };
+
+//   const handleTagChange=(newTags)=>{
+//     setTagMessage(newTags[newTags.length-1]);
+//  };
   return (
     <div className="postBox">
       <form>
         <div className="form_title">
             <h2>タイトル</h2>
-            <input placeholder="入力してください" type = "text"></input>
+            <input placeholder="入力してください" type = "text" onChange={(e)=>setTitleMessage(e.target.value)}/>
         </div>
         <div className="form_introduce">
             <h2>紹介文</h2>
-            <input placeholder="入力してください" type = "text"></input>
+            <input placeholder="入力してください" type = "text" onChange={(e)=>setIntroduceMessage(e.target.value)}/>
         </div>
         <div className="form_tag">
             <h2>タグ</h2>
-            {/*タグ追加機能実行する*/}
-            
             <TagInputComponent/>
+         
         </div>
         <div className="form_spotName">
             <h2>スポット</h2>
-            <input placeholder="入力してください" type = "text"></input>
+            <input placeholder="入力してください" type = "text" onChange={(e)=>setSpotNameMessage(e.target.value)}/>
         </div>
         <div className="form_spotIntroduce">
             <h2>説明</h2>
-            <input placeholder="入力してください" type = "text"></input>
+            <input placeholder="入力してください" type = "text"  onChange={(e)=>setSpotIntroduceMessage(e.target.value)}/>
         </div>
         <div className="form_image">
             <h2>画像</h2>
@@ -88,12 +123,6 @@ function Post() {
             </div>
             <div className="form_image">
               <h2>画像</h2>
-              <input
-                placeholder="画像"
-                type="text"
-                value={course.image}
-                onChange={(e) => handleImageChange(index, e.target.value)}
-              />
             </div>
             
             {/* アップロード画像の部分 */}
@@ -105,7 +134,8 @@ function Post() {
           </Button>
           <p>モデルコース追加</p>
         </div>
-            <button variant="outlined" className="postBox_postButton" type="submit">
+        {/* 投稿ボタンを押すことで格納される */}
+            <button variant="outlined" className="postBox_postButton" type="submit" onClick={sendRoute}>
             <p>投稿</p>
           </button>
         </form>
