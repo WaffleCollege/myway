@@ -20,3 +20,38 @@
     padding-left: 200px;
 }
 
+.search .search-img{
+    margin: 0px 30px;
+    display: flex;
+    color: #797979;
+    color: #797979;
+}
+
+/* .search{
+    position: relative;
+}
+
+.search-img{
+    position: absolute;
+    
+} */
+
+
+.search{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 80%;
+    height: 20%;
+    background: #9DDCDC;
+    border-radius: 6px;
+    padding:0 20px;
+}
+
+.search input{
+    border:none;
+    outline: none;
+    background: #9DDCDC;
+    font-size: 75%;
+
+}
