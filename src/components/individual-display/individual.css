@@ -21,6 +21,7 @@
     max-width: 1120px; 
     min-height: 100vh;
     margin: 0 auto;
+    background-color: #FFF4E1/*クリーム*/;
 }
 
 /*以下main*/
@@ -57,7 +58,7 @@
     overflow: hidden;
     margin: 0;
     position: relative;
-    padding-top: 30px;
+    padding-top: 10px;
 }
 
 .timeline_content {
@@ -84,7 +85,10 @@
 /*mappin_imgとindiv_spotNameの横並び↓*/
 .flex{
     display: flex;
-    padding: 10px;
+    padding-top: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
 .flex .mappin_img{
@@ -116,12 +120,15 @@
 
 
 .indiv_image{
-    padding: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 80px;
 }
 
 img{
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     object-fit: cover;
 }
 
