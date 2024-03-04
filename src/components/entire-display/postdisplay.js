@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import "./entire.css"
 import Entire from './entire';
+import storage from "../../firebase"
 
 class BoxSystemProps extends React.Component {
   render (){
@@ -10,7 +11,7 @@ class BoxSystemProps extends React.Component {
       height={200}
       width={200}
       my={4}
-    //   display="flex"
+      display="flex"
       alignItems="center"
       gap={4}
       p={2}

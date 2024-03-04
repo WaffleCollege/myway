@@ -3,7 +3,7 @@ import React from "react";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import "./ImageUpload.css";
 import {storage} from "../../firebase";
-import {ref, uploadBytes} from "firebase/storage";
+import {ref, uploadBytes,getDownloadURL} from "firebase/storage";
 
 const ImageUpload = () => {
 
@@ -12,8 +12,19 @@ const ImageUpload = () => {
         const file=e.target.files[0];
         const storageRef=ref(storage,"image/"+file.name);
         uploadBytes(storageRef,file).then((snapshot)=>{
-           console.log("Uploaded a blob or file!")
-        });
+           console.log("Uploaded a blob or file!");
+           getDownloadURL(snapshot.ref)
+           .then((url) => {
+               console.log("File available at", url);
+               // ここで取得したURLを使って、必要な処理を行う
+           })
+           .catch((error) => {
+               console.error("Error getting download URL:", error);
+           });
+       })
+       .catch((error) => {
+           console.error("Error uploading file:", error);
+       });
      };
 
     return (

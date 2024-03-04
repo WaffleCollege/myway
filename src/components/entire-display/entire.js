@@ -3,6 +3,7 @@ import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import { db } from '../../firebase';
 import Txt from './input'; // Txtコンポーネントのインポート
 import BoxSystemProps from './postdisplay'; // BoxSystemPropsコンポーネントのインポート
+import storage from "../../firebase"
 
 class Entire extends React.Component {
     constructor(props) {
@@ -29,7 +30,7 @@ class Entire extends React.Component {
                 </div>
                 {this.state.posts.map((post) => (
                     <div className="displayimages" key={post.id}>
-                        <BoxSystemProps title={post.title}/>
+                        <BoxSystemProps title={post.title} />
                     </div>
                 ))}
             </div>
