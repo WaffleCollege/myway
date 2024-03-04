@@ -5,12 +5,14 @@ import "./ImageUpload.css";
 import {storage} from "../../firebase";
 import {ref, uploadBytes} from "firebase/storage";
 
+//const[routeImage,setRoutetImage]=useState([]); 
 const ImageUpload = () => {
 
     /*firebaseに画像を投稿したものを保存する。firebaseの環境構築終わった後に接続*/
     const OnFileUploadToFirebase=(e)=>{
         const file=e.target.files[0];
         const storageRef=ref(storage,"image/"+file.name);
+        
         uploadBytes(storageRef,file).then((snapshot)=>{
            console.log("Uploaded a blob or file!")
         });
