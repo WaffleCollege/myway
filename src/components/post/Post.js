@@ -30,44 +30,84 @@ function Post() {
    const sendRoute=(e)=>{
     //firebaseのデータベースにデータ追加する
     e.preventDefault();
-    addDoc(collection(db,"posts"),{
+    const spotNameFromCourses= courses.map(course=>course.spot);
+    const updatedSpotNameMessage=[...SpotNameMessage,...spotNameFromCourses];
+
+      addDoc(collection(db,"posts"),{
         //image:routeImage,
         introduce: IntroduceMessage,
         spotIntroduce:SpotIntroduceMessage,
-        spotName:SpotNameMessage,
+        spotName:updatedSpotNameMessage,
+        //.arrayUnion(addCourse),
         //tag:TagMessage,
         title:TitleMessage,
     });
-   }
+    
+      // courses.forEach((course,index)=>{
+      //     addDoc(collection(db,"posts"),{
+      //       //spotIntroduce:course.spot,
+      //       spotName:course.spot
 
+      //     });
+      //   })
+    
+   }
 
   const [courses, setCourses] = useState([]);
 
   const addCourse = () => {
+    //setCoursesでuseStateで作られたcourses配列を更新する。...coursesで配列を展開し、spot~を追加。
     setCourses([...courses, { spot: '', introduce: '', image: '' }]);
   };
 
   const handleSpotChange = (index, value) => {
-    const newCourses = [...courses];
-    newCourses[index].spot = value;
-    setCourses(newCourses);
+    
+  const newCourses = [...courses];
+  //newCourses配列にspotキーの値を代入
+  //valueには下のインプットに文字を入力したときに取得されるe.target.value
+  newCourses[index].spot = value;
+  console.log("New courses:", newCourses);
+  //coursesが更新されてaddCourseが呼び出されたら
+  setCourses(newCourses);
+  // setSpotNameMessage(prevSpotNameMessage => {
+  //   const newSpotNameMessage = [...prevSpotNameMessage]; // 現在の spotName 配列をコピー
+  //   newSpotNameMessage[index] = value; // インデックス番号の位置に新しい値を設定
+  //   console.log("New spotNameMessage:", newSpotNameMessage);
+  //   return newSpotNameMessage.reverse();
+  // });
+
+  //const newSpotName = []; // 新しいスポット名配列をコピー
+  //newSpotName.push(SpotNameMessage); // インデックス番号の位置に新しい値を設定
+  //setSpotNameMessage(newSpotName); // スポット名配列を更新
+
   };
 
+
   const handleIntroduceChange = (index, value) => {
-    const newCourses = [...courses];
-    newCourses[index].introduce = value;
-    setCourses(newCourses);
+ 
+  const newCourses = [...courses];
+  newCourses[index].introduce = value;
+  setCourses(newCourses);
+  // setSpotIntroduceMessage(prevSpotIntroduceMessage => {
+  //   const newSpotIntroduceMessage = [...prevSpotIntroduceMessage]; // 現在の spotName 配列をコピー
+  //   newSpotIntroduceMessage[index] = value; // インデックス番号の位置に新しい値を設定
+  //   console.log("New spotNameMessage:", newSpotIntroduceMessage);
+  //   return newSpotIntroduceMessage.reverse();;
+  // });
   };
 
   const handleImageChange = (index, value) => {
-    const newCourses = [...courses];
-    newCourses[index].image = value;
-    setCourses(newCourses);
+  const newCourses = [...courses];
+  newCourses[index].image = value;
+  setCourses(newCourses);
+  //   setMessage(prevSpotNameMessage => {
+  //     const newSpotNameMessage = [...prevSpotNameMessage]; // 現在の spotName 配列をコピー
+  //     newSpotNameMessage[index] = value; // インデックス番号の位置に新しい値を設定
+  //     console.log("New spotNameMessage:", newSpotNameMessage);
+  //     return newSpotNameMessage.reverse();
+  //   });
   };
 
-//   const handleTagChange=(newTags)=>{
-//     setTagMessage(newTags[newTags.length-1]);
-//  };
   return (
     <div className="postBox">
       <form>
@@ -126,7 +166,8 @@ function Post() {
             </div>
             
             {/* アップロード画像の部分 */}
-            <ImageUpload />
+            <ImageUpload value={course.introduce}
+                onChange={(e) => handleImageChange(index, e.target.value)} />
           </div>
       ))}
        <div className="addCourse-section">
@@ -140,9 +181,6 @@ function Post() {
           </button>
         </form>
       </div>
-     
-      
-   
   );
 }
 
