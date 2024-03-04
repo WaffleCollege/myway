@@ -1,8 +1,10 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import "./entire.css"
+import Entire from './entire';
 
-export default function BoxSystemProps() {
+class BoxSystemProps extends React.Component {
+  render (){
   return (
     <Box className = "boxes"
       height={200}
@@ -14,7 +16,11 @@ export default function BoxSystemProps() {
       p={2}
       sx={{ border: '2px solid grey' }}
     >
-     画像、＃
+     <h1>{this.props.title}</h1>
+
     </Box>
   );
+  }
 }
+
+export default BoxSystemProps;　
