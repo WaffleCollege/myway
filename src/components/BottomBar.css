@@ -1,0 +1,21 @@
+.bottombar {
+    display: none;
+  }
+
+@media screen and (max-width: 480px) {
+  .bottombar {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    border-width: 3px;
+    border-style: solid;
+    z-index: 999;
+    border-color: #9DDCDC;
+    background-color: #9DDCDC;
+    height: 80px;
+  }
+}

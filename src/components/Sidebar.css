@@ -10,5 +10,10 @@
     padding: 20px;
     border-color: #9DDCDC;
   }
-  
-  
+
+  /* スマホサイズになったらサイドバーを非表示 */
+@media screen and (max-width: 480px) {
+  .sidebar {
+    display: none;
+  }
+}

@@ -2,13 +2,13 @@ import React, { useState, useEffect} from "react";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase"
-import "./Sidebar.css"; // 新しく作成するCSSファイルをインポート
+import "./BottomBar.css"; // 新しく作成するCSSファイルをインポート
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import EditIcon from '@mui/icons-material/Edit';
 
-function Sidebar() {
+function BottomBar() {
 
   //以下、ログイン状態の時にユーザー名を表示する設定
   const [user, setUser] = useState(null);
@@ -23,24 +23,25 @@ function Sidebar() {
   },[])
 
   return (
-    <div className="sidebar">
+    <div className="bottombar">
       {/* 各リンク */}
       <Button
-        sx={{ color: "#9DDCDC", width: "100%", textAlign: "left" ,paddingTop:"20px",fontWeight:"bold",fontSize:"15px"}}
+        sx={{ 
+            color: "#fff", width: "100%", textAlign: "left" ,paddingTop:"20px",fontWeight:"bold",fontSize:"15px"}}
         variant="text"
         size="large"
         component={Link}
         to="/"
       >
-         <HomeIcon/>
-        ホーム
+         <HomeIcon /> 
+         {/* アイコンサイズを指定 */}
        
       </Button>
 
       {user? (
         //ユーザーがログインしている場合
         <Button
-        sx={{ color: "#9DDCDC", width: "100%", textAlign: "left",paddingTop:"20px",fontWeight:"bold",fontSize:"15px" }}
+        sx={{ color: "#fff", width: "100%", textAlign: "left",paddingTop:"20px",fontWeight:"bold",fontSize:"15px" }}
         variant="text"
         size="large"
         component={Link}
@@ -52,27 +53,24 @@ function Sidebar() {
       ) : (
         //ユーザーがログインしていない場合
         <Button
-        sx={{ color: "#9DDCDC", width: "100%", textAlign: "left",paddingTop:"20px",fontWeight:"bold",fontSize:"15px" }}
+        sx={{ color: "#fff", width: "100%", textAlign: "left",paddingTop:"20px",fontWeight:"bold",fontSize:"15px" }}
         variant="text"
         size="large"
         component={Link}
         to="/SignUp_LogIn"
       >
         <PersonIcon/>
-        会員登録
-        ログイン
       </Button>
       )}
 
       <Button
-        sx={{ color: "#9DDCDC", width: "100%", textAlign: "left",padding:"20px" ,fontWeight:"bold",fontSize:"15px"}}
+        sx={{ color: "#fff", width: "100%", textAlign: "left",padding:"20px" ,fontWeight:"bold",fontSize:"15px"}}
         variant="text"
         size="large"
         component={Link}
         to="/User"
       >
         <BookmarkIcon/>
-        お気に入り
       </Button>
 
       <Button
@@ -83,7 +81,6 @@ function Sidebar() {
         to="/post"
       >
         <EditIcon/>
-        新規投稿
       </Button>
       {/* <Button
         sx={{ color: "#E67A7A", width: "100%", textAlign: "left" }}
@@ -100,4 +97,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default BottomBar;
