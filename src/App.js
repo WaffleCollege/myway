@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
+import BottomBar from "./components/BottomBar";
 import Entire from "./components/entire-display/entire";
 import SignUpLogIn from "./components/SignUp_logIn/SignUpLogIn";
 import Post from "./components/post/Post";
@@ -26,6 +27,11 @@ function App() {
             <Route path="/individual-display" element={<Individual />} />
             <Route path="/User" element={<UserProfile />} />
           </Routes>
+        </div>
+
+        {/* ボトムバー */}
+        <div className="bottom-bar">
+          <BottomBar />
         </div>
       </div>
     </BrowserRouter>
