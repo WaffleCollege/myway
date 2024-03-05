@@ -7,6 +7,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import EditIcon from '@mui/icons-material/Edit';
+import Logout from "./signUp_logIn/LogOut";
 
 function Sidebar() {
 
@@ -44,7 +45,7 @@ function Sidebar() {
         variant="text"
         size="large"
         component={Link}
-        to="/SignUp_LogIn"
+        to="/Logout"
       >
         <PersonIcon/>
         {user.displayName} さん
@@ -59,8 +60,7 @@ function Sidebar() {
         to="/SignUp_LogIn"
       >
         <PersonIcon/>
-        会員登録
-        ログイン
+        会員登録＆ログイン
       </Button>
       )}
 
@@ -80,10 +80,10 @@ function Sidebar() {
         variant="contained"
         size="large"
         component={Link}
-        to="/post"
+        // ログイン状態なら新規投稿へ、非ログイン状態ならログイン画面へ
+        to={user ? "/post" : "/SignUp_LogIn"}
       >
         <EditIcon/>
-        新規投稿
       </Button>
       {/* <Button
         sx={{ color: "#E67A7A", width: "100%", textAlign: "left" }}

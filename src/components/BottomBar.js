@@ -7,6 +7,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import EditIcon from '@mui/icons-material/Edit';
+import Logout from "./signUp_logIn/LogOut";
+
 
 function BottomBar() {
 
@@ -45,7 +47,7 @@ function BottomBar() {
         variant="text"
         size="large"
         component={Link}
-        to="/SignUp_LogIn"
+        to="/Logout"
       >
         <PersonIcon/>
         {user.displayName} さん
@@ -78,7 +80,8 @@ function BottomBar() {
         variant="contained"
         size="large"
         component={Link}
-        to="/post"
+        // ログイン状態なら新規投稿へ、非ログイン状態ならログイン画面へ
+        to={user ? "/post" : "/SignUp_LogIn"}
       >
         <EditIcon/>
       </Button>

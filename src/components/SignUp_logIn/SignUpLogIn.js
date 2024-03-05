@@ -93,6 +93,7 @@ function SignUpLogIn() {
         <div className={action==="新規登録"?"submit gray":"submit"}
           onClick={()=> action === "ログイン" ? handleLogin() : setAction("ログイン")}>ログイン</div>
       </div>
+      
     </div>
   );
 }
