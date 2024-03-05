@@ -30,7 +30,15 @@ function Post() {
    const sendRoute=(e)=>{
     //firebaseのデータベースにデータ追加する
     e.preventDefault();
-    const spotNameFromCourses= courses.map(course=>course.spot);
+    // const spotNameFromCourses= courses.map(course=>course.spot);
+    const spotNameFromCourses = courses.map((course, index) => {
+      if (index === courses.length - 1) {
+          return course.spot;
+      } else {
+          return null; // 最後の要素以外は null を返すか、適切な処理を行う
+      }
+  });
+  
     const updatedSpotNameMessage=[...SpotNameMessage,...spotNameFromCourses];
 
       addDoc(collection(db,"posts"),{
@@ -61,26 +69,13 @@ function Post() {
   };
 
   const handleSpotChange = (index, value) => {
-    
-  const newCourses = [...courses];
-  //newCourses配列にspotキーの値を代入
-  //valueには下のインプットに文字を入力したときに取得されるe.target.value
-  newCourses[index].spot = value;
-  console.log("New courses:", newCourses);
-  //coursesが更新されてaddCourseが呼び出されたら
-  setCourses(newCourses);
-  // setSpotNameMessage(prevSpotNameMessage => {
-  //   const newSpotNameMessage = [...prevSpotNameMessage]; // 現在の spotName 配列をコピー
-  //   newSpotNameMessage[index] = value; // インデックス番号の位置に新しい値を設定
-  //   console.log("New spotNameMessage:", newSpotNameMessage);
-  //   return newSpotNameMessage.reverse();
-  // });
+    setCourses(prevCourses => {
+        const updatedCourses = [...prevCourses];
+        updatedCourses[0] = { ...updatedCourses[0], spot: value };  // 一つ目のコースの spot プロパティを更新
+        return updatedCourses;
+    });
+};
 
-  //const newSpotName = []; // 新しいスポット名配列をコピー
-  //newSpotName.push(SpotNameMessage); // インデックス番号の位置に新しい値を設定
-  //setSpotNameMessage(newSpotName); // スポット名配列を更新
-
-  };
 
 
   const handleIntroduceChange = (index, value) => {
@@ -117,7 +112,12 @@ function Post() {
         </div>
         <div className="form_introduce">
             <h2>紹介文</h2>
-            <input placeholder="入力してください" type = "text" onChange={(e)=>setIntroduceMessage(e.target.value)}/>
+            <input
+    placeholder="入力してください"
+    type="text"
+    value={courses[0]?.spot || ''}  // 一つ目のスポットの入力値を表示する
+    onChange={(e) => handleSpotChange(0, e.target.value)}  // handleSpotChange 関数を呼び出してコースの spot プロパティを更新する
+/>
         </div>
         <div className="form_tag">
             <h2>タグ</h2>
@@ -126,7 +126,8 @@ function Post() {
         </div>
         <div className="form_spotName">
             <h2>スポット</h2>
-            <input placeholder="入力してください" type = "text" onChange={(e)=>setSpotNameMessage(e.target.value)}/>
+            <input placeholder="入力してください" type = "text" onChange={(e)=>setSpotNameMessage(e.target.value)} />
+            
         </div>
         <div className="form_spotIntroduce">
             <h2>説明</h2>
