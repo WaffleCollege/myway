@@ -32,15 +32,21 @@ function Post() {
     //SpotNameMessageとSpotIntroduceMessageの配列作成
     const spotNameFromCourses = courses.map(course => course.spot);
     const updatedSpotNameMessage = [SpotNameMessage, ...spotNameFromCourses];
-    
-    const spotIntroduceFromCourses = courses.map(course => course.introduce);
-    // const newSpotIntroduce=SpotIntroduceMessage;
-    const updatedSpotIntroduceMessage = [SpotIntroduceMessage, ...spotIntroduceFromCourses];
+
+    const newSpotObj={};
+    updatedSpotNameMessage.forEach((course,index)=>{
+      newSpotObj[index] = course;
+    });
+    //const spotIntroduceFromCourses = courses.map(course => course.introduce);
+    // const newSpot
+    //Introduce=SpotIntroduceMessage;
+    //const updatedSpotIntroduceMessage = [SpotIntroduceMessage, ...spotIntroduceFromCourses];
 
       addDoc(collection(db,"posts"),{
         introduce: IntroduceMessage,
-        spotIntroduce:updatedSpotIntroduceMessage,
-        spotName:updatedSpotNameMessage,
+        spotIntroduce:newSpotObj,
+        //updatedSpotIntroduceMessage,
+        //spotName:updatedSpotNameMessage,
         title:TitleMessage,
     });
     
@@ -84,8 +90,6 @@ function Post() {
    
     <div className="postBox">
       <form>
-      
-      
         <div className="form_title">
             <h2>タイトル</h2>
             <input placeholder="入力してください" type = "text" onChange={(e)=>setTitleMessage(e.target.value)}/>
