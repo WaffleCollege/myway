@@ -84,6 +84,7 @@ function Sidebar() {
         to={user ? "/post" : "/SignUp_LogIn"}
       >
         <EditIcon/>
+        新規投稿
       </Button>
       {/* <Button
         sx={{ color: "#E67A7A", width: "100%", textAlign: "left" }}
