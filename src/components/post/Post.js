@@ -31,12 +31,11 @@ function Post() {
 
     //SpotNameMessageとSpotIntroduceMessageの配列作成
     const spotNameFromCourses = courses.map(course => course.spot);
-    const newSpotName=SpotNameMessage;
-    const updatedSpotNameMessage = [newSpotName, ...spotNameFromCourses];
+    const updatedSpotNameMessage = [SpotNameMessage, ...spotNameFromCourses];
     
     const spotIntroduceFromCourses = courses.map(course => course.introduce);
-    const newSpotIntroduce=SpotIntroduceMessage;
-    const updatedSpotIntroduceMessage = [newSpotIntroduce, ...spotIntroduceFromCourses];
+    // const newSpotIntroduce=SpotIntroduceMessage;
+    const updatedSpotIntroduceMessage = [SpotIntroduceMessage, ...spotIntroduceFromCourses];
 
       addDoc(collection(db,"posts"),{
         introduce: IntroduceMessage,
