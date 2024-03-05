@@ -24,7 +24,7 @@ function SignUpLogIn() {
       // 会員登録成功時の処理
       console.log("会員登録成功")
     } catch (error) {
-      console.error(error.message)
+      alert("無効なユーザー情報です "+error.message)
     }
   };
 
@@ -35,7 +35,7 @@ function SignUpLogIn() {
       // ログイン成功時の処理
       console.log("ログイン成功")
     } catch (error) {
-      console.error(error.message)
+      alert("無効なユーザー情報です "+error.message)
     }
   };
 
