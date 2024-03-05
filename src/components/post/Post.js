@@ -6,7 +6,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ImageUpload from './ImageUpload';
 import TagInputComponent from './Tag';
 import {db} from "../../firebase";
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 //import {collection,getDocs} from "firebase"
 //import { collection, addDoc } from "firebase/firestore"; 
 
@@ -14,42 +14,36 @@ function Post() {
   //firebase連携
   const[posts,setPosts]=useState([]);
   const postData = collection(db,"posts");
-  // getDocs(postData).then((querySnapshot)=>{
-  //   setPosts(querySnapshot.docs.map((doc)=>doc.data()));
-  // });
 
   //inputタグに書いたものがfirebaseに格納されるように
    const[IntroduceMessage,setIntroduceMessage]=useState("");
    const[SpotIntroduceMessage,setSpotIntroduceMessage]=useState("");
-   const[SpotNameMessage,setSpotNameMessage]=useState("");
+   const[SpotNameMessage,setSpotNameMessage]=useState([]);
    //const[TagMessage,setTagMessage]=useState("");
    const[TitleMessage,setTitleMessage]=useState("");
-   //const[routeImage,setRoutetImage]=useState(""); 
+   const [imageArray, setImageArray] = useState([]);
+   
 
    //投稿ボタンを押すことで格納される
    const sendRoute=(e)=>{
     //firebaseのデータベースにデータ追加する
     e.preventDefault();
-    const spotNameFromCourses= courses.map(course=>course.spot);
-    const updatedSpotNameMessage=[...SpotNameMessage,...spotNameFromCourses];
+
+    //SpotNameMessageとSpotIntroduceMessageの配列作成
+    const spotNameFromCourses = courses.map(course => course.spot);
+    const newSpotName=SpotNameMessage;
+    const updatedSpotNameMessage = [newSpotName, ...spotNameFromCourses];
+    
+    const spotIntroduceFromCourses = courses.map(course => course.introduce);
+    const newSpotIntroduce=SpotIntroduceMessage;
+    const updatedSpotIntroduceMessage = [newSpotIntroduce, ...spotIntroduceFromCourses];
 
       addDoc(collection(db,"posts"),{
-        //image:routeImage,
         introduce: IntroduceMessage,
-        spotIntroduce:SpotIntroduceMessage,
+        spotIntroduce:updatedSpotIntroduceMessage,
         spotName:updatedSpotNameMessage,
-        //.arrayUnion(addCourse),
-        //tag:TagMessage,
         title:TitleMessage,
     });
-    
-      // courses.forEach((course,index)=>{
-      //     addDoc(collection(db,"posts"),{
-      //       //spotIntroduce:course.spot,
-      //       spotName:course.spot
-
-      //     });
-      //   })
     
    }
 
@@ -66,20 +60,9 @@ function Post() {
   //newCourses配列にspotキーの値を代入
   //valueには下のインプットに文字を入力したときに取得されるe.target.value
   newCourses[index].spot = value;
-  console.log("New courses:", newCourses);
   //coursesが更新されてaddCourseが呼び出されたら
   setCourses(newCourses);
-  // setSpotNameMessage(prevSpotNameMessage => {
-  //   const newSpotNameMessage = [...prevSpotNameMessage]; // 現在の spotName 配列をコピー
-  //   newSpotNameMessage[index] = value; // インデックス番号の位置に新しい値を設定
-  //   console.log("New spotNameMessage:", newSpotNameMessage);
-  //   return newSpotNameMessage.reverse();
-  // });
-
-  //const newSpotName = []; // 新しいスポット名配列をコピー
-  //newSpotName.push(SpotNameMessage); // インデックス番号の位置に新しい値を設定
-  //setSpotNameMessage(newSpotName); // スポット名配列を更新
-
+  
   };
 
 
@@ -88,29 +71,22 @@ function Post() {
   const newCourses = [...courses];
   newCourses[index].introduce = value;
   setCourses(newCourses);
-  // setSpotIntroduceMessage(prevSpotIntroduceMessage => {
-  //   const newSpotIntroduceMessage = [...prevSpotIntroduceMessage]; // 現在の spotName 配列をコピー
-  //   newSpotIntroduceMessage[index] = value; // インデックス番号の位置に新しい値を設定
-  //   console.log("New spotNameMessage:", newSpotIntroduceMessage);
-  //   return newSpotIntroduceMessage.reverse();;
-  // });
+  
   };
 
   const handleImageChange = (index, value) => {
   const newCourses = [...courses];
   newCourses[index].image = value;
   setCourses(newCourses);
-  //   setMessage(prevSpotNameMessage => {
-  //     const newSpotNameMessage = [...prevSpotNameMessage]; // 現在の spotName 配列をコピー
-  //     newSpotNameMessage[index] = value; // インデックス番号の位置に新しい値を設定
-  //     console.log("New spotNameMessage:", newSpotNameMessage);
-  //     return newSpotNameMessage.reverse();
-  //   });
+
   };
 
   return (
+   
     <div className="postBox">
       <form>
+      
+      
         <div className="form_title">
             <h2>タイトル</h2>
             <input placeholder="入力してください" type = "text" onChange={(e)=>setTitleMessage(e.target.value)}/>
@@ -135,11 +111,14 @@ function Post() {
         <div className="form_image">
             <h2>画像</h2>
             {/*ボタンを押したら画像のアップロードができる*/}
-            <ImageUpload/>
+            <ImageUpload setImageArray={setImageArray}/>
+            
             
         </div>
-        
+       
+       
       </form>
+      
       <form>
       {courses.map((course, index) => (
           <div key={index} className="additionalCourse">
@@ -180,7 +159,8 @@ function Post() {
             <p>投稿</p>
           </button>
         </form>
-      </div>
+     </div>
+       
   );
 }
 
