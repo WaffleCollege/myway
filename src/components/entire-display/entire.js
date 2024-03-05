@@ -15,6 +15,7 @@ class Entire extends React.Component {
         this.state = {
             posts: [],
             openModals: {}, //各モーダルの開閉状態を管理
+            currentPostId: null, // 現在表示中の投稿IDを管理
         };
     }
     componentDidMount() {
@@ -27,51 +28,55 @@ class Entire extends React.Component {
             this.setState({ posts: post.docs.map((doc) => ({ ...doc.data(), id: doc.id })) });
         });
     }
-
+    
     openModal = (postId) => {
-        this.setState((prevState) => ({
-            openModals: {
-                ...prevState.openModals,
-                [postId]: true, // 特定の投稿のモーダルを開く
-            },
-        }));
-    }
+        this.setState({
+          openModals: {
+            [postId]: true,
+          },
+          currentPostId: postId, // 現在表示中の投稿IDを更新
+        });
+      };
+    
+      closeModal = () => {
+        this.setState({
+          openModals: {},
+          currentPostId: null, // モーダルを閉じたら現在表示中の投稿IDをリセット
+        });
+      };
+    
 
-    closeModal = (postId) => {
-        this.setState((prevState) => ({
-            openModals: {
-                ...prevState.openModals,
-                [postId]: false, // 特定の投稿のモーダルを閉じる
-            },
-        }));
-    }
+    render() {        
+        const currentPost = this.state.posts[this.state.currentPostId];
 
-    render() {
         return (
             <div className="whole">
                 <div className="explore">
                     <Txt />
                 </div>
-                {this.state.posts.map((post) => (
-                    <div className="displayimages" key={post.id}>
-                        <BoxSystemProps title={post.title} />
+                
+                {Object.entries(this.state.posts).map(([key, post]) => (
+                    <div className="displayimages" key={key}>
+                           <BoxSystemProps title={post.title} />              
+           
+            <button className="modalbutton" onClick={() => this.openModal(key)}>
+              Check!
+            </button>
 
-                         {/* 投稿ごとのモーダル */}
-                        <Modal
-                            isOpen={this.state.openModals[post.id] || false}
-                            onRequestClose={() => this.closeModal(post.id)}
-                            contentLabel={`Individual Post Modal - ${post.id}`}
-                        >
-                            {/* Individualコンポーネントをモーダル内で表示 */}
-                            <Individual postId={post.id} />
-                        </Modal>
-
-                        {/* モーダルを開くボタン */}
-                        <button className='modalbutton' onClick={() => this.openModal(post.id)}>Check!</button>   
-                    </div>
+            {/* 投稿ごとのモーダル */}            
+            <Modal
+              isOpen={this.state.currentPostId === key}
+              onRequestClose={this.closeModal}
+              contentLabel={`Individual Post Modal - ${key}`}
+            >
+              {/* Individual コンポーネントをモーダル内で表示 */}
+              {currentPost && <Individual post={currentPost} />}
+            </Modal>
+                        </div>
                 ))}
             </div>
         );
     }
 }
+
 export default Entire;
