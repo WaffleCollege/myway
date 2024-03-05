@@ -1,6 +1,9 @@
 /* カラー：#7EC2C2, #9DDCDC, #FFF4E1, #E67A7A */
 #signup-wrapper{
-    margin-top:0;
+    margin-top:3%;
+    max-width: 50%;
+    margin: 0 auto;
+    display: flex;
 }
 
 .container{
@@ -9,26 +12,25 @@
     margin: 0 auto;
     border-radius: 15px;
     background: #9DDCDC;
-    padding-bottom: 30px;
 }
 
 .header{
     display:flex;
     flex-direction: column;
     align-items: center;
-    gap: 9px;
+    gap: 3%;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 10%;
 }
 
 .text{
     color: #E67A7A;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .underline{
-    width: 61px;
+    width: 60px;
     height: 6px;
     background-color: #E67A7A;
     border-radius: 9px;
@@ -38,15 +40,14 @@
     margin-top: 55px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
 }
 
 .input{
     display: flex;
     align-items: center;
-    margin: auto;
+    margin:20px auto;
     width: 80%;
-    height: 20%;
+    /* height: 20%; */
     background: #fff;
     border-radius: 6px;
     padding:0 20px;
@@ -81,7 +82,7 @@
     justify-content: center;
     align-items: center;
     width: 220px;
-    height: 59px;
+    height: 60px;
     color: #fff;
     background: #E67A7A;
     border-radius: 50px;
@@ -103,6 +104,43 @@
     color: #fff;
 }
 
-/* .btn{
+.btn{
     width: 100%;
-} */
+}
+
+@media screen and (max-width: 775px) {
+    .submit-container{
+        display: block;
+        width: 55%;
+        margin: 20px auto;
+    }
+    .submit{
+        margin: 20px auto;
+        height: 40%;
+        width: 100%;
+        font-weight: 300;
+        font-size: 15px;
+    }
+    .container{
+        width: 80%;
+        height: 600px;
+    }
+    #signup-wrapper{
+        display: flex;
+        margin: 20px auto;
+        max-width: 70%;
+    }
+    .inputs{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .input input{
+        height: 50px;
+        width: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #797979;
+        font-size: 19px;
+    }
+  }
