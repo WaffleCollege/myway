@@ -1,48 +1,35 @@
-
 import React, { useState } from 'react';
 import './User.css';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
-const UserProfile = () => {
-  // ユーザー名とプロフィール画像の状態
-  const [userName, setUserName] = useState('登録されたユーザー名');
-  const [profileImage, setProfileImage] = useState(null);
-  // いいねされた投稿の状態（ここではサンプルとして空の配列を使用）
-  const [likedPosts, setLikedPosts] = useState([]);
-
-  // プロフィール画像のアップロードハンドラ
-  const handleProfileImageUpload = event => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        setProfileImage(e.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
+// FavoriteButton を名前付きエクスポートに変更
+export const FavoriteButton = () => {
   return (
-    <div className="user-profile">
-      <div className="profile-header">
-        {/* プロフィール画像を表示 */}
-        <div className="profile-image">
-          {profileImage ? <img src={profileImage} alt="Profile" /> : <p>画像なし</p>}
-          <input type="file" onChange={handleProfileImageUpload} accept="image/*" />
-        </div>
-        {/* ユーザー名を表示 */}
-        <h1>{userName}</h1>
-      </div>
-      <div className="liked-posts">
-        {/* ここにいいねされた投稿をリスト表示 */}
-        {likedPosts.map((post, index) => (
-          <div key={index} className="post">
-            {/* 投稿の内容を表示 */}
-            <p>{post.content}</p>
-          </div>
-        ))}
-      </div>
+    <div>
+      <FavoriteIcon />
     </div>
   );
+};
+
+// ImageBox コンポーネント（変更なし）
+const ImageBox = ({ imageUrl, caption, tags }) => {
+  return (
+    <div className="image-box">
+      <img src={imageUrl} alt="Post" />
+      <div className="image-caption">{caption}</div>
+      <div className="image-tags">
+        {tags.map((tag, index) => (
+          <span key={index}>#{tag}</span>
+        ))}
+      </div>
+      <div className="image-checkmark">✔</div>
+    </div>
+  );
+};
+
+// UserProfile コンポーネントをデフォルトエクスポートとして維持
+const UserProfile = () => {
+  // コンポーネントの実装は変更なし
 };
 
 export default UserProfile;

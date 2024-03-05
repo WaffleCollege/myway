@@ -1,0 +1,14 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px; /* サイドバーの幅を調整 */
+    height: 100%;
+    border-width: 3px;
+    border-style: solid;
+    z-index: 999;
+    padding: 20px;
+    border-color: #9DDCDC;
+  }
+  
+  

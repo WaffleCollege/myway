@@ -1,45 +1,52 @@
-
 .user-profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #A4FFAF; /* 合わせて調整 */
-  }
-  
-  .profile-header {
-    display: flex;
-    align-items: center;
-    margin: 20px;
-  }
-  
-  .profile-image img {
-    border-radius: 50%;
-    width: 100px; /* 画像サイズに合わせて調整 */
-    height: 100px; /* 画像サイズに合わせて調整 */
-    margin-right: 20px;
-  }
-  
-  .profile-image p {
-    width: 100px; /* 画像サイズに合わせて調整 */
-    height: 100px; /* 画像サイズに合わせて調整 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 50%;
-  }
-  
-  .liked-posts {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 20px;
-  }
-  
-  .post {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 10px;
-    /* その他のスタイル */
-  }
-  
+  background-color: #f9f9f9; /* ベースの背景色 */
+  color: #333; /* テキストの色 */
+  font-family: 'Arial', sans-serif; /* フォントスタイル */
+  /* その他のスタイリング */
+}
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* 均等に間隔を開ける */
+  padding: 20px; /* グリッド全体のパディング */
+}
+
+.image-box {
+  width: 300px; /* 画像ボックスの幅 */
+  margin-bottom: 20px; /* 画像ボックス間の間隔 */
+  background-color: #e0f7fa; /* 画像ボックスの背景色 */
+  border: 3px solid #b2ebf2; /* 画像ボックスの枠線色 */
+  border-radius: 8px; /* 角丸の設定 */
+  overflow: hidden; /* 枠をはみ出す画像を隠す */
+}
+
+.image-box img {
+  width: 100%; /* 画像の幅をボックスに合わせる */
+  display: block; /* 画像をブロック要素として表示 */
+}
+
+.image-caption {
+  color: #333; /* キャプションのテキスト色 */
+  padding: 10px; /* キャプション部分のパディング */
+  background-color: #ffffff; /* キャプション部分の背景色 */
+}
+
+.image-tags {
+  padding: 10px;
+  background-color: #b2ebf2; /* タグ部分の背景色 */
+}
+
+.image-tags span {
+  color: #00796b; /* タグのテキスト色 */
+  margin-right: 5px; /* タグ間の間隔 */
+}
+
+.image-checkmark {
+  color: #4caf50; /* チェックマークの色 */
+  font-size: 24px; /* チェックマークのサイズ */
+  padding: 10px; /* チェックマーク部分のパディング */
+}
+
+/* その他のスタイリングも必要に応じて追加します。 */
+

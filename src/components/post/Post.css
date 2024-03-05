@@ -2,8 +2,8 @@
     padding:20px;
     margin:100px 100px 100px 100px;
     width :50%;
-    border: 1px #797979;
-    border-style: dotted;
+    border: 3px #9DDCDC;
+    
     margin:0 auto;
 }
 h2{
@@ -32,11 +32,23 @@ input{
     color:#797979;
 }
 .postBox_postButton{
-    padding:2px;
-    color:white;
-    background-color:#797979;
-    width :30%;
+   
     margin:0 auto;
-    border-radius:50px;
-    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 59px;
+    color: #fff;
+    background: #797979;
+    border-radius: 50px;
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow:0 3px 1px #524545;
 }
+
+/* .tagInput{
+    display:none;
+} */
