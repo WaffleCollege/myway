@@ -31,4 +31,11 @@
     margin: 0 auto;
     display: block;
     text-align: center;
+    width:50%;
+    height: auto;
+}
+.logout-img{
+    margin: 0 auto;
+    border-radius: 150px;
+    margin-bottom: 20%;
 }
