@@ -16,7 +16,7 @@ class BoxSystemProps extends React.Component {
                 sx={{ border: '2px solid grey' }}
             >
                 <h1>{this.props.title}</h1>
-                {this.props.imageUrl && <img src={this.props.imageUrl} alt="Uploaded" />} {/* 画像があれば表示 */}
+                {this.props.image && <img src={this.props.image} alt="Uploaded" />} {/* 画像があれば表示 */}
             </Box>
         );
     }

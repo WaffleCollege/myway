@@ -63,7 +63,7 @@ class Entire extends React.Component {
                 </div>
                 {this.state.posts.map((post) => (
                     <div className="displayimages" key={post.id}>
-                        <BoxSystemProps title={post.title} imageUrl={this.state.imageUrls[0]} /> {/* imageUrlをBoxSystemPropsに渡す */}
+                        <BoxSystemProps title={post.title} imageUrl={post.image} /> {/* imageUrlをBoxSystemPropsに渡す */}
                         <Modal
                             isOpen={this.state.openModals[post.id] || false}
                             onRequestClose={() => this.closeModal(post.id)}
