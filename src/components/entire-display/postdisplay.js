@@ -6,17 +6,21 @@ function BoxSystemProps({title,image})  {
   
         return (
             <Box className="boxes"
-                height={200}
-                width={200}
-                my={4}
+                //  height={400}
+                //  width={300}
+                //my={4}
                 display="flex"
                 alignItems="center"
                 gap={4}
                 p={2}
-                // sx={{ border: '2px solid grey' }
+                sx={{ border: '2px solid grey' }}
             >
-                <h1>{title}</h1>
-                <img src={image} alt="Uploaded Image" />
+                <p>{title}</p>
+                <img src={image} 
+                height={300}
+                width={200}
+                
+                alt="Uploaded Image" />
             </Box>
         );
     }
