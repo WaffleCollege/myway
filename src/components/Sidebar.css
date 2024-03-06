@@ -1,15 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 200px; /* サイドバーの幅を調整 */
+    width: 180px; /* サイドバーの幅を調整 */
     height: 100%;
     border-width: 3px;
     border-style: solid;
     z-index: 999;
     padding: 20px;
-    border-color: #9DDCDC;
+    border-color: #7EC2C2;
+    background-color: #7EC2C2;
   }
+.sidebar p{
+  color: #fff;
+  font-size: 18px;
+
+}
+.icon-wrapper{
+  color: #fff;
+  padding: 3px;
+  margin: 2px;
+  font-size: 30px;
+}
+
+.title{
+  margin: 0 auto;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #fff;
+}
 
   /* スマホサイズになったらサイドバーを非表示 */
 @media screen and (max-width: 480px) {
