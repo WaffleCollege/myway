@@ -24,12 +24,25 @@
     background-color: #FFF4E1/*クリーム*/;
 }
 
+/* モバイルサイズ以下の場合 */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%; /* 画面幅の90%までに制限 */
+    }
+}
+
+/* タブレットサイズ以下の場合 */
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 80%; /* 画面幅の80%までに制限 */
+    }
+}
+
 /*以下main*/
 .indiv_intro_box{
     background-color: #FFF4E1/*クリーム*/;
     padding: 10px;
 }
-
 
 .indiv_title{
     padding: 10px;
@@ -54,6 +67,21 @@
     padding: 0;
 }
 
+/* モバイルサイズ以下の場合 */
+@media screen and (max-width: 768px) {
+    .indiv_course_box {
+        padding: 10px; /* 適切なパディングサイズに調整してください */
+    }
+
+    .timeline_content {
+        width: 100%; /* 画面幅いっぱいに広げる */
+        float: none; /* float 解除 */
+        border-left: none; /* 左のボーダーを削除 */
+        padding-left: 0; /* パディングを削除 */
+        margin-left: 0; /* マージンを削除 */
+    }
+}
+
 .timeline > li {
     overflow: hidden;
     margin: 0;
@@ -65,8 +93,8 @@
     width: 75%;
     float: left;
     border-left: 3px #E67A7A/*ピンク*/ solid;
-    padding-left: 30px;
-    margin-left: 20px;
+    padding-left: 10px;
+    margin-left: 10px;
     position: relative;
 }
 
@@ -130,6 +158,10 @@ img{
     width: 280px;
     height: 280px;
     object-fit: cover;
+    max-width: 100%; /* 画面幅いっぱいに広げる */    
+    height: auto; /* アスペクト比を保つために高さを自動調整 */
+    display: block; /* 不要な余白を削除するためにブロック要素に変更 */
+    margin: auto; /* センタリング */
 }
 
 button {

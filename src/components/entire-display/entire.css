@@ -37,6 +37,15 @@
     color: #797979;
 }
 
+.boxes{
+    background-color: #9DDCDC;
+}
+
+.boxtitle{
+    color: #FFF4E1;
+    text-shadow: -1px -1px 0 #808080, 1px -1px 0 #808080, -1px 1px 0 #808080, 1px 1px 0 #808080;
+}
+
 /* .search{
     position: relative;
 }
@@ -68,6 +77,10 @@
 
 Modal{
     background-color: #FFF4E1;
+}
+
+.indiv_title{
+    color: #797979;
 }
 
 .modalbutton{

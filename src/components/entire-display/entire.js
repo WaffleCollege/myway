@@ -3,6 +3,7 @@ import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import { db } from '../../firebase';
 import BoxSystemProps from './postdisplay';
 import Modal from 'react-modal';
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 Modal.setAppElement('#root');
 
@@ -61,12 +62,60 @@ class Entire extends React.Component {
                     onRequestClose={this.closeModal}
                     contentLabel="Individual Post Modal"
                 >
+                <div className="container">
+                       
                     {selectedPost && (
                         <div>
-                            <h2>{selectedPost.title}</h2>
-                            {/* ここに詳細情報などを表示 */}
+                         <div className="indiv_intro_box">
+                            <div className='indiv_title'>
+                            <h1>{selectedPost.title}</h1>
+                            </div>
+                            <div className="indiv_introduce">
+                            <h2>{selectedPost.introduce}</h2>
+                            </div>
+                         </div>
+                        <div className="indiv_course_box">
+                        <ul className='timeline'>
+                        {selectedPost.spotName && Object.entries(selectedPost.spotName).map(([spotKey, spot]) => (
+                         <li>
+                          <div className='timeline_content'>
+                          <div className='flex'>
+                            <figure className='mappin_img'>
+                            <FaMapMarkerAlt />
+                            </figure>
+                            <div className="indiv_spotName">                                                         
+                                            
+                        <div>
+                            <h3>{spot}</h3>
+                        </div>                        
+                    
+                    </div>
                         </div>
-                    )}
+
+                    <div className="indiv_spotIntroduce">
+                    
+                        <div>                            
+                            <h3>{selectedPost.spotIntroduce[spotKey]}</h3>
+                        </div>
+                    
+                    </div>
+
+                    <div className="indiv_image"> 
+                    
+                        <div>
+                            <img src={selectedPost.image[spotKey]} alt={`Spot ${spotKey}`} />
+                        </div>
+                    
+                    </div>
+                    </div>
+                    </li>
+                    ))}
+                    </ul>
+            
+                    </div>        
+                </div>
+    )}
+    </div> 
                 </Modal>
             </div>
         );
