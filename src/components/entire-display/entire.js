@@ -63,7 +63,7 @@ class Entire extends React.Component {
                 
                 {Object.entries(this.state.posts).map(([key, post]) => (
                     <div className="displayimages" key={key}>
-                           <BoxSystemProps title={post.title} image={post.image}/>              
+                           <BoxSystemProps title={post.title} image={post.coverImage}/>              
            
             <button className="modalbutton" onClick={() => this.openModal(key)}>
               Check!
