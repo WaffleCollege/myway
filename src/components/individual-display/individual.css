@@ -132,4 +132,21 @@ img{
     object-fit: cover;
 }
 
+button {
+    display: block;
+	text-align: center;
+	text-decoration: none;
+	width: 120px;
+	margin: auto;
+	padding: 1rem 4rem;
+    padding: 20px;
+	font-weight: bold;
+	color: #9DDCDC;
+	border: 1px solid #9DDCDC;
+    border-bottom: 2px solid #7EC2C2;
+	border-radius: 100vh;
+	box-shadow: 0 2px 7px #7EC2C2(0, 0, 0, .3);
+	-webkit-box-shadow: 0 2px 7px #7EC2C2(0, 0, 0, .3);
+	transition: 0.5s;
+}
 /*mainここまで*/

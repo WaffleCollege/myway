@@ -78,29 +78,29 @@ const toggleModal = (key) => {
                 
         <div className="indiv_course_box">           
           <ul className='timeline'>
-            {post.spotName && Object.values(post.spotName).map((spot) => (
-               <li key={spot.name}>
+            {post.spotName && Object.entries(post.spotName).map(([spotKey, spot]) => (
+               <li key={spotKey}>
                <div className='timeline_content'>
                  <div className='flex'>
                    <figure className='mappin_img'>
                      <FaMapMarkerAlt />
                      </figure>
                    <div className="indiv_spotName">
-                     <h3>{spot.name}</h3>
+                     <h3>{spot}</h3>
                      </div>
                  </div>
                  
-                 {spot.introduce && (
+                {post.spotIntroduce && post.spotIntroduce[spotKey] && (
                         <div className="indiv_spotIntroduce">
-                          <h3>{spot.introduce}</h3>
-                        </div>
+                          <h3>{post.spotIntroduce[spotKey]}</h3>
+                        </div>                      
                       )}
-                  
-                  {/*
-                  <div className="indiv_image">
-                   <img src={post.img}/>
-                   </div>
-                  */}                                  
+                      
+                      
+                <div className="indiv_image">
+                        <img src={post.image[spotKey]} />
+                      </div>
+                                           
                 </div>
                 
                
