@@ -32,28 +32,4 @@ return (
 );
 };
 
-
-//     const sendRoute=(e)=>{
-//         //firebaseのデータベースにデータ追加する
-//         e.preventDefault();
-//         addDoc(collection(db,"posts"),{
-//             tag:TagMessage 
-//         });
-//        }
-//        const handleTagChange=(newTags)=>{
-//         setTags(newTags);
-//         setTagMessage(newTags[newTags.length-1]);
-//         console.log(newTags)
-//      };
-//     return (
-//         <ReactTagInput
-//             placeholder="入力してください"
-//             tags={tags} 
-//             // onChange=
-//             // {(newTags) => setTags(newTags)} 
-//             onChange={handleTagChange}
-//         />
-//     )
-// }
-
 export default TagInputComponent;

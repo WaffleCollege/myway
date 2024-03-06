@@ -1,11 +1,11 @@
 import React from 'react';
 import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import { db } from '../../firebase';
-import Txt from './input'; // Txtコンポーネントのインポート
-import BoxSystemProps from './postdisplay'; // BoxSystemPropsコンポーネントのインポート
-import storage from "../../firebase"
-import Modal from 'react-modal';//ReactModalのインポート
-import Individual from '../individual-display/individual';//individual-displayインポート
+import Txt from './input';
+import BoxSystemProps from './postdisplay';
+import storage from "../../firebase";
+import Modal from 'react-modal';
+import Individual from '../individual-display/individual';
 
 Modal.setAppElement('#root');
 
@@ -18,6 +18,7 @@ class Entire extends React.Component {
             currentPostId: null, // 現在表示中の投稿IDを管理
         };
     }
+
     componentDidMount() {
         const postData = collection(db, "posts");
         getDocs(postData).then((querySnapshot) => {
@@ -45,6 +46,11 @@ class Entire extends React.Component {
         });
       };
     
+      handleImageUploaded = (url) => {
+        this.setState(prevState => ({
+            imageUrls: [...prevState.imageUrls, url]
+        }));
+    }
 
     render() {        
         const currentPost = this.state.posts[this.state.currentPostId];
@@ -57,7 +63,7 @@ class Entire extends React.Component {
                 
                 {Object.entries(this.state.posts).map(([key, post]) => (
                     <div className="displayimages" key={key}>
-                           <BoxSystemProps title={post.title} />              
+                           <BoxSystemProps title={post.title} image={post.image}/>              
            
             <button className="modalbutton" onClick={() => this.openModal(key)}>
               Check!

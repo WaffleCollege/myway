@@ -37,6 +37,7 @@ function SignUpLogIn() {
       await signInWithEmailAndPassword(authObj, email, password);
       // ログイン成功時の処理
       console.log("ログイン成功")
+      navigate("/post")
     } catch (error) {
       alert("無効なユーザー情報です "+error.message)
     }
