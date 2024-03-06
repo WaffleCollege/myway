@@ -1,27 +1,25 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import "./entire.css"
-import Entire from './entire';
-import storage from "../../firebase"
+import "./entire.css";
 
-class BoxSystemProps extends React.Component {
-  render (){
-  return (
-    <Box className = "boxes"
-      height={200}
-      width={200}
-      my={4}
-      display="flex"
-      alignItems="center"
-      gap={4}
-      p={2}
-      sx={{ border: '2px solid grey' }}
-    >
-     <h1>{this.props.title}</h1>
+function BoxSystemProps({title,image})  {
+  
+        return (
+            <Box className="boxes"
+                height={200}
+                width={200}
+                my={4}
+                display="flex"
+                alignItems="center"
+                gap={4}
+                p={2}
+                sx={{ border: '2px solid grey' }}
+            >
+                <h1>{title}</h1>
+                <img src={image} alt="Uploaded Image" />
+            </Box>
+        );
+    }
 
-    </Box>
-  );
-  }
-}
 
-export default BoxSystemProps;　
+export default BoxSystemProps;
