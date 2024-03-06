@@ -44,7 +44,7 @@ function Sidebar() {
         variant="text"
         size="large"
         component={Link}
-        to="/SignUp_LogIn"
+        to="/Logout"
       >
         <PersonIcon/>
         {user.displayName} さん
@@ -59,8 +59,7 @@ function Sidebar() {
         to="/SignUp_LogIn"
       >
         <PersonIcon/>
-        会員登録
-        ログイン
+        会員登録＆ログイン
       </Button>
       )}
 
@@ -80,7 +79,8 @@ function Sidebar() {
         variant="contained"
         size="large"
         component={Link}
-        to="/post"
+        // ログイン状態なら新規投稿へ、非ログイン状態ならログイン画面へ
+        to={user ? "/post" : "/SignUp_LogIn"}
       >
         <EditIcon/>
         新規投稿

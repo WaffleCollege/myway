@@ -3,26 +3,52 @@ import "./Post.css";
 import {Button} from "@mui/material";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 //import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-import ImageUpload from './ImageUpload';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import {storage} from "../../firebase";
+//import ImageUpload from './ImageUpload';
 import TagInputComponent from './Tag';
 import {db} from "../../firebase";
+import {ref, uploadBytes,getDownloadURL} from "firebase/storage";
 import { collection, addDoc } from 'firebase/firestore';
-//import {collection,getDocs} from "firebase"
-//import { collection, addDoc } from "firebase/firestore"; 
 
 function Post() {
-  //firebase連携
-  const[posts,setPosts]=useState([]);
-  const postData = collection(db,"posts");
 
-  //inputタグに書いたものがfirebaseに格納されるように
-   const[IntroduceMessage,setIntroduceMessage]=useState("");
-   const[SpotIntroduceMessage,setSpotIntroduceMessage]=useState("");
-   const[SpotNameMessage,setSpotNameMessage]=useState([]);
-   //const[TagMessage,setTagMessage]=useState("");
-   const[TitleMessage,setTitleMessage]=useState("");
-   const [imageArray, setImageArray] = useState([]);
-   
+    //inputタグに書いたものがfirebaseに格納されるように
+    const[IntroduceMessage,setIntroduceMessage]=useState("");
+    const[SpotIntroduceMessage,setSpotIntroduceMessage]=useState([]);
+    const[SpotNameMessage,setSpotNameMessage]=useState([]);
+    //const[TagMessage,setTagMessage]=useState("");
+    const[TitleMessage,setTitleMessage]=useState("");
+    const [imageArray, setImageArray] = useState([]);
+  
+        /*firebaseに画像を投稿したものを保存する。firebaseの環境構築終わった後に接続*/
+        // const OnFileUploadToFirebase = (e) => {
+        //     const file=e.target.files[0];
+        //     //const randomDirectoryName = Math.random().toString(36).substring(2);
+        //     const storageRef=ref(storage,'path/to/file');
+            
+        //     uploadBytes(storageRef,file).then((snapshot)=>{
+        //        console.log("Uploaded a blob or file!");
+        //        getDownloadURL(snapshot.ref)
+        //        .then((url) => {
+        //            console.log("File available at", url);
+        //            // ここで取得したURLを使って、必要な処理を行う
+        //            setImageArray(prevImageArray => [...prevImageArray, url]); 
+        //        })
+        //        .catch((error) => {
+        //            console.error("Error getting download URL:", error);
+        //        });
+        //    })
+        //    .catch((error) => {
+        //        console.error("Error uploading file:", error);
+        //    });
+           
+        //  };
+
+  //firebase連携
+  // const[posts,setPosts]=useState([]);
+  // const postData = collection(db,"posts");
+
 
    //投稿ボタンを押すことで格納される
    const sendRoute=(e)=>{
@@ -32,18 +58,34 @@ function Post() {
     //SpotNameMessageとSpotIntroduceMessageの配列作成
     const spotNameFromCourses = courses.map(course => course.spot);
     const updatedSpotNameMessage = [SpotNameMessage, ...spotNameFromCourses];
-    
+
+    const newSpotObj={};
+    updatedSpotNameMessage.forEach((course,index)=>{
+      newSpotObj[index] = course;
+    });
     const spotIntroduceFromCourses = courses.map(course => course.introduce);
-    // const newSpotIntroduce=SpotIntroduceMessage;
     const updatedSpotIntroduceMessage = [SpotIntroduceMessage, ...spotIntroduceFromCourses];
+
+    const newSpotIntroObj={};
+    updatedSpotIntroduceMessage.forEach((courseIntro,index)=>{
+      newSpotIntroObj[index] = courseIntro;
+    });
+
+    const imageFromCourses=courses.map(course=>course.image);
+    const updatedImage=[imageArray, ...imageFromCourses];
+
+    const newImageObj={};
+    updatedImage.forEach((courseImage,index)=>{
+      newImageObj[index] = courseImage;
+    });
 
       addDoc(collection(db,"posts"),{
         introduce: IntroduceMessage,
-        spotIntroduce:updatedSpotIntroduceMessage,
-        spotName:updatedSpotNameMessage,
+        spotIntroduce:newSpotIntroObj,
+        image:newImageObj,
+        spotName:newSpotObj,
         title:TitleMessage,
     });
-    
    }
 
   const [courses, setCourses] = useState([]);
@@ -66,26 +108,20 @@ function Post() {
 
 
   const handleIntroduceChange = (index, value) => {
- 
   const newCourses = [...courses];
   newCourses[index].introduce = value;
   setCourses(newCourses);
-  
   };
 
   const handleImageChange = (index, value) => {
   const newCourses = [...courses];
   newCourses[index].image = value;
   setCourses(newCourses);
-
   };
 
   return (
-   
     <div className="postBox">
       <form>
-      
-      
         <div className="form_title">
             <h2>タイトル</h2>
             <input placeholder="入力してください" type = "text" onChange={(e)=>setTitleMessage(e.target.value)}/>
@@ -97,7 +133,6 @@ function Post() {
         <div className="form_tag">
             <h2>タグ</h2>
             <TagInputComponent/>
-         
         </div>
         <div className="form_spotName">
             <h2>スポット</h2>
@@ -109,10 +144,23 @@ function Post() {
         </div>
         <div className="form_image">
             <h2>画像</h2>
-            {/*ボタンを押したら画像のアップロードができる*/}
-            <ImageUpload setImageArray={setImageArray}/>
-            
-            
+            <div className="outerBox">
+        
+        <label htmlFor="fileInput">
+        <Button className="postBox_addImage">
+          <AddPhotoAlternateIcon className="custom-icon"/>
+          </Button>
+          </label>
+          
+          <input 
+          className="imageUploadInput" 
+          type="file" 
+          onChange={(e) => setImageArray(e.target.value)}
+          accept=".png, .jpeg, .jpg"
+          />
+        
+       
+      </div>
         </div>
        
        
@@ -142,10 +190,23 @@ function Post() {
             <div className="form_image">
               <h2>画像</h2>
             </div>
+            <div className="outerBox">
+        
+        
+        <Button className="postBox_addImage">
+          <AddPhotoAlternateIcon className="custom-icon"/>
+          </Button>
+          
             
-            {/* アップロード画像の部分 */}
-            <ImageUpload value={course.introduce}
-                onChange={(e) => handleImageChange(index, e.target.value)} />
+            <input 
+          className="imageUploadInput" 
+          type="file" 
+          value={course.image}
+                onChange={(e) => handleImageChange(index, e.target.value)}
+          accept=".png, .jpeg, .jpg"
+          />
+        
+          </div>
           </div>
       ))}
        <div className="addCourse-section">
@@ -163,4 +224,6 @@ function Post() {
   );
 }
 
-export default Post
+export default Post;
+  
+

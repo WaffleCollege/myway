@@ -8,6 +8,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import EditIcon from '@mui/icons-material/Edit';
 
+
+
 function BottomBar() {
 
   //以下、ログイン状態の時にユーザー名を表示する設定
@@ -45,7 +47,7 @@ function BottomBar() {
         variant="text"
         size="large"
         component={Link}
-        to="/SignUp_LogIn"
+        to="/Logout"
       >
         <PersonIcon/>
         {user.displayName} さん
@@ -78,7 +80,8 @@ function BottomBar() {
         variant="contained"
         size="large"
         component={Link}
-        to="/post"
+        // ログイン状態なら新規投稿へ、非ログイン状態ならログイン画面へ
+        to={user ? "/post" : "/SignUp_LogIn"}
       >
         <EditIcon/>
       </Button>

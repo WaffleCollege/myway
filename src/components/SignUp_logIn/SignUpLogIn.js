@@ -6,12 +6,14 @@ import UserIcon from '@mui/icons-material/Person';
 import PasswordIcon from '@mui/icons-material/Key';
 import { createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
 function SignUpLogIn() {
   const [action,setAction] = useState("新規登録")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [username, setUsername] = useState("")
+  const navigate = useNavigate();
 
   const handleSignUp = async() => {
     try {
@@ -23,8 +25,9 @@ function SignUpLogIn() {
       await updateProfile(user, { displayName: username });
       // 会員登録成功時の処理
       console.log("会員登録成功")
+      navigate("/post")
     } catch (error) {
-      console.error(error.message)
+      alert("無効なユーザー情報です "+error.message)
     }
   };
 
@@ -35,7 +38,7 @@ function SignUpLogIn() {
       // ログイン成功時の処理
       console.log("ログイン成功")
     } catch (error) {
-      console.error(error.message)
+      alert("無効なユーザー情報です "+error.message)
     }
   };
 
@@ -93,6 +96,7 @@ function SignUpLogIn() {
         <div className={action==="新規登録"?"submit gray":"submit"}
           onClick={()=> action === "ログイン" ? handleLogin() : setAction("ログイン")}>ログイン</div>
       </div>
+      
     </div>
   );
 }

@@ -1,0 +1,41 @@
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 60px;
+    color: #fff;
+    background: #E67A7A;
+    border-radius: 50px;
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow:0 3px 1px #524545;
+    margin: 0 auto;
+}
+
+.btn:hover{
+    box-shadow: none;
+    position: relative;
+    top: 3px;
+    background: #7EC2C2;
+    color: #fff;
+}
+.btn:active{
+    box-shadow: none;
+    position: relative;
+    top: 3px;
+}
+.logout-container{
+    max-width: 50%;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width:50%;
+    height: auto;
+}
+.logout-img{
+    margin: 0 auto;
+    border-radius: 150px;
+    margin-bottom: 20%;
+}
