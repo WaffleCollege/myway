@@ -84,3 +84,9 @@ Modal{
 	border-bottom: 2px solid #7EC2C2;
 	transform: translateY(3px);
 }
+
+.whole{
+    display: flex;
+    flex-wrap: wrap;
+  justify-content:space-between;
+}
