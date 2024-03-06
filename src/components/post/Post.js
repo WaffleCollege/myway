@@ -154,7 +154,7 @@ function Post() {
           
           <input 
           className="imageUploadInput" 
-          type="file" 
+          type="text" 
           onChange={(e) => setImageArray(e.target.value)}
           accept=".png, .jpeg, .jpg"
           />
@@ -200,7 +200,7 @@ function Post() {
             
             <input 
           className="imageUploadInput" 
-          type="file" 
+          type="text" 
           value={course.image}
                 onChange={(e) => handleImageChange(index, e.target.value)}
           accept=".png, .jpeg, .jpg"
