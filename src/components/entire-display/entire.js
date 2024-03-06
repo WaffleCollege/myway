@@ -70,17 +70,19 @@ class Entire extends React.Component {
             </button>
             User
 
-            {/* 投稿ごとのモーダル */}            
+                      
             <Modal
               isOpen={this.state.currentPostId === key}
               onRequestClose={this.closeModal}
               contentLabel={`Individual Post Modal - ${key}`}
             >
-              {/* Individual コンポーネントをモーダル内で表示 */}
+              
               {currentPost && <Individual post={currentPost} />}
-            </Modal>            
+            </Modal>
+                         
                         </div>
                 ))}
+               
             </div>
         );
     }
