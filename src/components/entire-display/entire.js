@@ -1,11 +1,8 @@
 import React from 'react';
 import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import { db } from '../../firebase';
-// import Txt from './input';
 import BoxSystemProps from './postdisplay';
-import storage from "../../firebase";
 import Modal from 'react-modal';
-import Individual from '../individual-display/individual';
 
 Modal.setAppElement('#root');
 
@@ -14,8 +11,8 @@ class Entire extends React.Component {
         super(props);
         this.state = {
             posts: [],
-            openModals: {}, //各モーダルの開閉状態を管理
             currentPostId: null, // 現在表示中の投稿IDを管理
+            selectedPost: null // 選択された投稿の詳細情報を保持
         };
     }
 
@@ -30,59 +27,47 @@ class Entire extends React.Component {
         });
     }
     
-    openModal = (postId) => {
+    openModal = (post) => {
         this.setState({
-          openModals: {
-            [postId]: true,
-          },
-          currentPostId: postId, // 現在表示中の投稿IDを更新
+          currentPostId: post.id, // 現在表示中の投稿IDを更新
+          selectedPost: post // 選択された投稿の詳細情報を設定
         });
-      };
+    };
     
-      closeModal = () => {
+    closeModal = () => {
         this.setState({
-          openModals: {},
           currentPostId: null, // モーダルを閉じたら現在表示中の投稿IDをリセット
+          selectedPost: null // 選択された投稿の詳細情報をリセット
         });
-      };
-    
-      handleImageUploaded = (url) => {
-        this.setState(prevState => ({
-            imageUrls: [...prevState.imageUrls, url]
-        }));
-    }
+    };
 
     render() {        
-        const currentPost = this.state.posts[this.state.currentPostId];
+        const { posts, currentPostId, selectedPost } = this.state;
 
         return (
             <div className="whole">
-                {/* <div className="explore">
-                    <Txt />
-                </div> */}
-                
-                {Object.entries(this.state.posts).map(([key, post]) => (
-                    <div className="displayimages" key={key}>
-                           <BoxSystemProps title={post.title} image={post.coverImage}/>              
-           
-            <button className="modalbutton" onClick={() => this.openModal(key)}>
-              Check!
-            </button>
-            User
-
-                      
-            <Modal
-              isOpen={this.state.currentPostId === key}
-              onRequestClose={this.closeModal}
-              contentLabel={`Individual Post Modal - ${key}`}
-            >
-              
-              {currentPost && <Individual post={currentPost} />}
-            </Modal>
-                         
-                        </div>
+                {posts.map((post, index) => (
+                    <div className="displayimages" key={index}>
+                        <BoxSystemProps title={post.title} image={post.coverImage}/>              
+                        <button className="modalbutton" onClick={() => this.openModal(post)}>
+                            Check!
+                        </button>
+                    </div>
                 ))}
-               
+                
+                {/* 選択された投稿の詳細情報をモーダルで表示 */}
+                <Modal
+                    isOpen={currentPostId !== null}
+                    onRequestClose={this.closeModal}
+                    contentLabel="Individual Post Modal"
+                >
+                    {selectedPost && (
+                        <div>
+                            <h2>{selectedPost.title}</h2>
+                            {/* ここに詳細情報などを表示 */}
+                        </div>
+                    )}
+                </Modal>
             </div>
         );
     }
