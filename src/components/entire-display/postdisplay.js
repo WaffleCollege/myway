@@ -13,7 +13,7 @@ function BoxSystemProps({title,image})  {
                 alignItems="center"
                 gap={4}
                 p={2}
-                sx={{ border: '2px solid grey' }}
+                // sx={{ border: '2px solid grey' }
             >
                 <h1>{title}</h1>
                 <img src={image} alt="Uploaded Image" />
