@@ -43,7 +43,7 @@
 
 .boxtitle{
     color: #FFF4E1;
-    text-shadow: -1px -1px 0 #808080, 1px -1px 0 #808080, -1px 1px 0 #808080, 1px 1px 0 #808080;
+    font-size: 20px;    
 }
 
 /* .search{
