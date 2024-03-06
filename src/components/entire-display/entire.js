@@ -46,6 +46,11 @@ class Entire extends React.Component {
         });
       };
     
+      handleImageUploaded = (url) => {
+        this.setState(prevState => ({
+            imageUrls: [...prevState.imageUrls, url]
+        }));
+    }
 
     render() {        
         const currentPost = this.state.posts[this.state.currentPostId];
@@ -58,7 +63,7 @@ class Entire extends React.Component {
                 
                 {Object.entries(this.state.posts).map(([key, post]) => (
                     <div className="displayimages" key={key}>
-                           <BoxSystemProps title={post.title} />              
+                           <BoxSystemProps title={post.title} image={post.image}/>              
            
             <button className="modalbutton" onClick={() => this.openModal(key)}>
               Check!

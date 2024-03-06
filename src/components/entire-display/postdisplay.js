@@ -2,8 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import "./entire.css";
 
-class BoxSystemProps extends React.Component {
-    render() {
+function BoxSystemProps({title,image})  {
+  
         return (
             <Box className="boxes"
                 height={200}
@@ -15,11 +15,11 @@ class BoxSystemProps extends React.Component {
                 p={2}
                 sx={{ border: '2px solid grey' }}
             >
-                <h1>{this.props.title}</h1>
-                {this.props.image && <img src={this.props.image} alt="Uploaded" />} {/* 画像があれば表示 */}
+                <h1>{title}</h1>
+                <img src={image} alt="Uploaded Image" />
             </Box>
         );
     }
-}
+
 
 export default BoxSystemProps;
