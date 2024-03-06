@@ -85,8 +85,12 @@ Modal{
 	transform: translateY(3px);
 }
 
-.whole{
-    display: flex;
-    flex-wrap: wrap;
-  justify-content:space-between;
+.box-container {
+    display: flex; /* Flexboxを使用して要素を横一列に配置 */
+    flex-wrap: nowrap; /* 折り返しを禁止して横一列に並べる */
+}
+
+.box {
+    /* 各ボックスのスタイル（幅や余白など）を適宜設定 */
+    margin-right: 10px; /* ボックス間の間隔を設定 */
 }
