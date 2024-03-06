@@ -25,6 +25,11 @@ function Sidebar() {
   return (
     <div className="sidebar">
       {/* 各リンク */}
+      <div className="title">
+        <h1>Way Better</h1>
+        <br></br>
+      </div>
+
       <Button
         sx={{ color: "#9DDCDC", width: "100%", textAlign: "left" ,paddingTop:"20px",fontWeight:"bold",fontSize:"15px"}}
         variant="text"
@@ -32,8 +37,8 @@ function Sidebar() {
         component={Link}
         to="/"
       >
-         <HomeIcon/>
-        ホーム
+        <div className="icon-wrapper"><HomeIcon/></div>
+        <p>ホーム</p>
        
       </Button>
 
@@ -46,8 +51,8 @@ function Sidebar() {
         component={Link}
         to="/Logout"
       >
-        <PersonIcon/>
-        {user.displayName} さん
+        <div className="icon-wrapper"><PersonIcon/></div>
+        <p>{user.displayName} さん</p>
       </Button>
       ) : (
         //ユーザーがログインしていない場合
@@ -58,21 +63,12 @@ function Sidebar() {
         component={Link}
         to="/SignUp_LogIn"
       >
-        <PersonIcon/>
-        会員登録＆ログイン
+        <div className="icon-wrapper"><PersonIcon/></div>
+        <p>会員登録<br></br>ログイン</p>
+        
       </Button>
       )}
 
-      <Button
-        sx={{ color: "#9DDCDC", width: "100%", textAlign: "left",padding:"20px" ,fontWeight:"bold",fontSize:"15px"}}
-        variant="text"
-        size="large"
-        component={Link}
-        to="/User"
-      >
-        <BookmarkIcon/>
-        お気に入り
-      </Button>
 
       <Button
         sx={{ color: "#9DDCD", backgroundColor:"#E67A7A",width: "100%", textAlign: "left",fontWeight:"bold" ,fontSize:"15px",":hover" : {background: "#9DDCDC"}}}
