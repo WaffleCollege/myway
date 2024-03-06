@@ -20,35 +20,9 @@ function Post() {
     //const[TagMessage,setTagMessage]=useState("");
     const[TitleMessage,setTitleMessage]=useState("");
     const [imageArray, setImageArray] = useState([]);
+    const [coverImageMessage, setCoverImage] = useState([]);
   
-        /*firebaseに画像を投稿したものを保存する。firebaseの環境構築終わった後に接続*/
-        // const OnFileUploadToFirebase = (e) => {
-        //     const file=e.target.files[0];
-        //     //const randomDirectoryName = Math.random().toString(36).substring(2);
-        //     const storageRef=ref(storage,'path/to/file');
-            
-        //     uploadBytes(storageRef,file).then((snapshot)=>{
-        //        console.log("Uploaded a blob or file!");
-        //        getDownloadURL(snapshot.ref)
-        //        .then((url) => {
-        //            console.log("File available at", url);
-        //            // ここで取得したURLを使って、必要な処理を行う
-        //            setImageArray(prevImageArray => [...prevImageArray, url]); 
-        //        })
-        //        .catch((error) => {
-        //            console.error("Error getting download URL:", error);
-        //        });
-        //    })
-        //    .catch((error) => {
-        //        console.error("Error uploading file:", error);
-        //    });
-           
-        //  };
-
-  //firebase連携
-  // const[posts,setPosts]=useState([]);
-  // const postData = collection(db,"posts");
-
+  
 
    //投稿ボタンを押すことで格納される
    const sendRoute=(e)=>{
@@ -86,6 +60,9 @@ function Post() {
         spotName:newSpotObj,
         title:TitleMessage,
     });
+      addDoc(collection(db,"posts"),{
+         coverImage:coverImageMessage,
+      })
    }
 
   const [courses, setCourses] = useState([]);
@@ -122,6 +99,15 @@ function Post() {
   return (
     <div className="postBox">
       <form>
+      <div className="coverImage">
+            <h2>カバー画像</h2>
+            <input 
+          className="imageUploadInput" 
+          type="text" 
+          onChange={(e) => setCoverImage(e.target.value)}
+          accept=".png, .jpeg, .jpg"
+          />
+        </div>
         <div className="form_title">
             <h2>タイトル</h2>
             <input placeholder="入力してください" type = "text" onChange={(e)=>setTitleMessage(e.target.value)}/>
