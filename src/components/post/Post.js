@@ -59,10 +59,9 @@ function Post() {
         image:newImageObj,
         spotName:newSpotObj,
         title:TitleMessage,
+        coverImage:coverImageMessage,
     });
-      addDoc(collection(db,"posts"),{
-         coverImage:coverImageMessage,
-      })
+      
    }
 
   const [courses, setCourses] = useState([]);
