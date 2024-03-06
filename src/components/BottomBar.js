@@ -7,7 +7,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import EditIcon from '@mui/icons-material/Edit';
-import Logout from "./signUp_logIn/LogOut";
+
 
 
 function BottomBar() {
