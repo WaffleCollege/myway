@@ -1,7 +1,7 @@
 import React from 'react';
 import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import { db } from '../../firebase';
-import Txt from './input';
+// import Txt from './input';
 import BoxSystemProps from './postdisplay';
 import storage from "../../firebase";
 import Modal from 'react-modal';
@@ -57,9 +57,9 @@ class Entire extends React.Component {
 
         return (
             <div className="whole">
-                <div className="explore">
+                {/* <div className="explore">
                     <Txt />
-                </div>
+                </div> */}
                 
                 {Object.entries(this.state.posts).map(([key, post]) => (
                     <div className="displayimages" key={key}>
