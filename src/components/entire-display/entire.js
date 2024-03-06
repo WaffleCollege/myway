@@ -62,6 +62,7 @@ class Entire extends React.Component {
             <button className="modalbutton" onClick={() => this.openModal(key)}>
               Check!
             </button>
+            User
 
             {/* 投稿ごとのモーダル */}            
             <Modal
@@ -71,7 +72,7 @@ class Entire extends React.Component {
             >
               {/* Individual コンポーネントをモーダル内で表示 */}
               {currentPost && <Individual post={currentPost} />}
-            </Modal>
+            </Modal>            
                         </div>
                 ))}
             </div>
