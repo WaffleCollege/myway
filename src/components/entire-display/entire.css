@@ -21,10 +21,33 @@
     display:flex;
     flex-wrap: wrap;
     cursor: pointer;
-    margin-left: 30%;
+    margin-left: 30%; 
 }
 .displayimages{
-    margin-left: 20%;
+    
+    margin: 0 auto;
+}
+
+@media screen and (min-width:1020px)  {
+    .boxes{
+        
+        margin-left: 30%; 
+    }
+    .displayimages{
+        margin-left:10%; 
+        /* margin:0 auto; */
+    }
+}
+
+@media screen and ( min-width:1200px) {
+    .boxes{
+        
+        margin-left: 40%; 
+    }
+    .displayimages{
+        margin-left:30%; 
+        /* margin:0 auto; */
+    }
 }
 .whole{
     
