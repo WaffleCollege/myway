@@ -65,7 +65,7 @@ function BottomBar() {
       </Button>
       )}
 
-      <Button
+      {/* <Button
         sx={{ color: "#fff", width: "100%", textAlign: "left",padding:"20px" ,fontWeight:"bold",fontSize:"15px"}}
         variant="text"
         size="large"
@@ -73,7 +73,7 @@ function BottomBar() {
         to="/User"
       >
         <BookmarkIcon/>
-      </Button>
+      </Button> */}
 
       <Button
         sx={{ color: "#9DDCD", backgroundColor:"#E67A7A",width: "100%", textAlign: "left",fontWeight:"bold" ,fontSize:"15px",":hover" : {background: "#9DDCDC"}}}
